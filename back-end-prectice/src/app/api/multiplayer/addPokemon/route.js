@@ -14,7 +14,7 @@ export async function POST(request) {
         if(!exist) {
             return NextResponse.json({ message: "user not find" }, { status: 400 })
         }
-        for (let i = 0; i < pokemonArrray.length; index++) {
+        for (let i = 0; i < pokemonArrray.length; i++) {
             const pokemonId = pokemonArrray[i].pokemonId
             if (!exist.pokemon.includes(pokemonId)) {
                 exist.pokemon.push(pokemonId)

@@ -6,7 +6,7 @@ export async function POST(request) {
     const reqbody = await request.json()
     const { coustomeIds } = reqbody
     let data = await Promise.all(coustomeIds.map(async (item) => {
-        const obj = await Pokemon.findOne({ coustome_id: item}).select("-_id")
+        const obj = await Pokemon.findOne({ coustome_id: item.pokemonId}).select("-_id")
         return obj
 
     }))

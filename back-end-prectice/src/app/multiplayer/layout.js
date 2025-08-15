@@ -2,7 +2,6 @@ import { GroupMemberProvider } from "./context/GroupMemberContext";
 import { SocketContextProvider } from "./context/SocketContext";
 // import { PokemonProvider } from "../context/PokemonContext";
 export default function MultiplayerLayout({ children }) {
-  console.log("child ")
   return (
     <section>
       <GroupMemberProvider>

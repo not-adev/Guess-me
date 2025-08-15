@@ -67,7 +67,7 @@ const createRoom = () => {
     };
   }, []);
   function callbackFromMultiplayer(){
-
+    setShowgame(false)
   }
   function Play() {
     socket.current.emit("showSelect", {})

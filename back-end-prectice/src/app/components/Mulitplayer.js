@@ -61,14 +61,7 @@ const Mulitplayer = ({callback }) => {
 
   }
 
-  
-
-
-
-
-
   function callbackFromGame() {
-
     callback("show room interface")
   }
 
@@ -77,7 +70,7 @@ const Mulitplayer = ({callback }) => {
     <div>
       {showSelect ?
 
-        <Select callback={callbackFromSelect} id={myid} /> :
+        <Select callback={callbackFromSelect} id={myid} /> : 
         <MultiplayerGame myselection={myselection} callback={callbackFromGame} pokemonTransfer={pokemonTransfer} />
 
       }

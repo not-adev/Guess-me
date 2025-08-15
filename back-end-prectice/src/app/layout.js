@@ -19,7 +19,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-console.log(" majfadsfks")
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

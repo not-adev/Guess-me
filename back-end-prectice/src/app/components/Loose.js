@@ -1,10 +1,20 @@
 import React from 'react'
 
-const Loose = ({}) => {
+const Loose = ({arrayOfData = []}) => {
   return (
-    <div>
+     <div className='perspective-[1000px] relative'>
+            <div className='text-white font-bold text-center pt-7 pb-2 text-4xl'>
+                You Loose
+            </div>
+            {
+                arrayOfData.map((item)=>{
+                    return (
 
-    </div>
+                        <Cardcomponent data={item}  />
+                    )
+                })
+            }
+        </div>
   )
 }
 

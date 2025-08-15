@@ -62,3 +62,96 @@ const page = () => {
 }
 
 export default page
+
+    // for (let index = 0; index < pokemonTransfer.length; index++) {
+                //     const e = pokemonTransfer[index];
+                //     if (e._id == id) {
+                //         for (let i = 0; i < e.snaching.length; i++) {
+                //             const item = e.snaching[i];
+                //             if (item._id == myid) {
+                //                 console.log(item)
+                //                 pokemonId.current = item.coustomeId
+                //                 break
+                //             }
+
+                //         }
+                //         break
+                //     }
+
+                // }
+            //     const deleteRes = await fetch(
+            //         `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/deletePokemon`,
+            //         {
+            //             method: 'POST',
+            //             headers: {
+            //                 'Content-Type': 'application/json',
+            //             },
+            //             body: JSON.stringify({
+            //                 coustomeId: pokemonId.current
+            //             })
+
+
+            //         }
+            //     )
+            //     const deleteResJ = await deleteRes.json()
+            //     console.log(deleteResJ.message)
+            //     console.log("pokemon id", pokemonId.current)
+            //     const showcardDaata = [{ id: myid, pokemonId: pokemonId.current }]
+
+            //     const ft = await fetch(
+            //         `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/showCard`,
+            //         {
+            //             method: 'POST',
+            //             headers: {
+            //                 'Content-Type': 'application/json',
+            //             },
+            //             body: JSON.stringify({
+            //                 coustomeIds: showcardDaata
+            //             })
+
+
+            //         }
+            //     )
+            //     const ftJ = await ft.json()
+            //     setCardtoshow(ftJ.array)
+            //     setLoose(true)
+            //     return
+            // }
+
+
+             //  fetch(
+                        //         `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/addPokmeon`,
+                        //         {
+                        //             method: 'POST',
+                        //             headers: {
+                        //                 'Content-Type': 'application/json',
+                        //             },
+                        //             body: JSON.stringify({
+                        //                 pokemonArrray: myselection
+                        //             })
+            
+            
+                        //         }
+                        //     )
+                        //         .then((res) => res.json())
+                        //         .then(data => console.log(data.message))
+            
+            
+                        //     const ft = await fetch(
+                        //         `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/showCard`,
+                        //         {
+                        //             method: 'POST',
+                        //             headers: {
+                        //                 'Content-Type': 'application/json',
+                        //             },
+                        //             body: JSON.stringify({
+                        //                 coustomeIds: myselection
+                        //             })
+            
+            
+                        //         }
+                        //     )
+                        //     const ftJ = await ft.json()
+                        //     setCardtoshow(ftJ.data)
+                        //     setWon(true)
+            

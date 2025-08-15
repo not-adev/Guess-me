@@ -48,6 +48,8 @@ const joinRoom = () => {
       const { data } = await ft.json()
       console.log(data)
       setPokemons(data)
+
+      
     }
     getpokemons()
 
@@ -77,6 +79,10 @@ const joinRoom = () => {
       }
     };
   }, [])
+
+   function callbackFromMultiplayer(){
+    setShowgame(false)
+  }
 
 
 
@@ -129,7 +135,7 @@ const joinRoom = () => {
             </form>
           </div>)
           :
-          showgame ? <Mulitplayer /> :
+          showgame ? <Mulitplayer callback={callbackFromMultiplayer}/> :
             (<div className='flex items-center justify-center flex-col h-screen'>
               <div className='w-[70%] relative mt-auto p-3  m-auto flex items-center justify-center flex-col '>
 

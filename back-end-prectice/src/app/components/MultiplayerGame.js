@@ -5,12 +5,14 @@ import Clock from '../components/Clock'
 import Won from '../components/Won'
 import { useSocketContext } from '../multiplayer/context/SocketContext'
 import Multiplayerbutton from './Multiplayerbutton'
+import { useGroupMemberContext } from '../multiplayer/context/GroupMemberContext'
 import Loose from '../components/Loose'
-import MultiplayerPlayScreen from './MultiplayerPlayScreen'
 
 const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
     const socket = useSocketContext()
     const router = useRouter()
+    const { allmembers, setAllmembers } = useGroupMemberContext()
+   
     const [showclock, setShowclock] = useState(true)
     const [data, setData] = useState([{ img: "", coustome_id: 0 }])
     const [loading, setloading] = useState(false)
@@ -106,13 +108,13 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
                         }
                     )
                     const ftJ = await ft.json()
-                    setCardtoshow(ftJ.array)
+                    setCardtoshow(ftJ.data)
                     setLoose(true)
                 }
                 else {
                     console.log("adding")
                     fetch(
-                        `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/addPokmeon`,
+                        `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/addPokemon`,
                         {
                             method: 'POST',
                             headers: {
@@ -143,6 +145,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
                         }
                     )
                     const ftJ = await ft.json()
+                    console.log(ftJ.data)
                     setCardtoshow(ftJ.data)
                     setWon(true)
                 }
@@ -168,22 +171,15 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
     }
 
     const Quite = () => {
-        router.push("/main")
+       setAllmembers({members : [] , pokemonData : []})
+       router.push("/main")
+       
     }
 
 
 
     const Next = () => {
-        setBlured(true)
-        if (YouWon) {
-            setWon(false)
-        }
-        else {
-            setLoose(false)
-        }
-        callback()
-
-
+        callback(1)
 
     }
 
@@ -260,8 +256,8 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
                         </div>
 
 
-
-                        <Won data={cardtoshow} />
+                        
+                        <Won arrayOfData={cardtoshow} />
 
 
 
@@ -293,7 +289,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
 
                 {
                     loading &&
-                    <div><img src="loading-img.gif" alt="loading.." className='rounded-full absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' /></div>
+                    <div><img src="/public/loading-img.gif" alt="loading.." className='rounded-full absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' /></div>
                 }
                 {data.length > 2 && !loading && !visible &&
                     <div className={`w-[70%] m-auto  border flex items-center justify-center `}>

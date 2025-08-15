@@ -16,7 +16,7 @@ export async function GET() {
                         break
                 }
         }
-        console.log(randomArray)
+        
         for (let index = 0; index < 4; index++) {
 
                 const random = randomArray[index]
@@ -25,7 +25,7 @@ export async function GET() {
                 data.push(res)
 
         }
-        console.log(data)
+       
         return NextResponse.json(data)
 
 
