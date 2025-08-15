@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+.preserve-3d {
+    transform-style: preserve-3d;
+
+}
+
+.perspective-1000 {
+    perspective: 1000px;
+}
+
+.origin-center-top {
+    perspective-origin:center top ;
+}
+
+@keyframes guess_me {
+    0%,100% { 
+        filter: brightness(0%);
+
+    }
+    50% { filter: brightness(100%);}
+    
+}
+
+.play_guess_me {
+    animation: guess_me 10s linear  infinite  ;
+}
+
+
+/* ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+} */
+
+::-webkit-scrollbar {
+    width: 6px;
+    background-color:  #292e38;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+.re{
+   
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.63) 0%, rgba(0, 0, 0, 0.63) 100%), #33a165;
+      background-blend-mode: soft-light, normal;
+      
+
+}
