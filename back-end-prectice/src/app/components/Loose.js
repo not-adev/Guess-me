@@ -8,4 +8,4 @@ const Loose = ({}) => {
   )
 }
 
-export default Loose
+export default React.memo(Loose)

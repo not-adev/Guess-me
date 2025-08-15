@@ -54,6 +54,7 @@ const Mulitplayer = ({callback }) => {
   // ]
   function callbackFromSelect(pokemonTra, myselection) {
     console.log("callback form select")
+    
     setpokemonTransfer(pokemonTra)
     setMyselection(myselection)
     setShowSelect(false)

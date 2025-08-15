@@ -81,7 +81,7 @@ io.on("connection", (socket) => {
   })
 
   socket.on("joinRoom", ({ data, roomName, pokemonData }, callback) => {
- 
+
     // const exist = Rooms.findIndex(item => item.roomName == roomName)
 
 
@@ -99,38 +99,41 @@ io.on("connection", (socket) => {
 
     callback({ members: false, pokemonData: [] })
     const all = io.sockets.adapter.rooms
-   
-   
+
+
     console.log("room ", Rooms.get(socket.roomName))
 
 
   })
 
-  socket.on("giveId" , ({},callback)=>{
-    callback({_id : socket.coustomeId})
+  socket.on("giveId", ({ }, callback) => {
+    callback({ _id: socket.coustomeId })
   })
 
   socket.on("doneSelection", ({ selectedPokemons }) => {
     console.log("done selection call ")
-    socket.to(socket.roomName).emit("TRdoneSelection", { id: socket.id, selectedPokemons })
+    console.log(selectedPokemons)
+    socket.to(socket.roomName).emit("TRdoneSelection", { id: socket.coustomeId, selectedPokemons })
   })
-  socket.on("showSelect" ,()=>{
-    io.to(socket.roomName).emit("TRshowSelect" , {})
+  socket.on("showSelect", () => {
+    io.to(socket.roomName).emit("TRshowSelect", {})
   })
   socket.on("startGame", ({ }) => {
-    
+    console.log("strt dskdshdghdfkjghfdh ")
     io.to(socket.roomName).emit("TRstartGame", {})
   })
 
-  socket.on("isWinner", ({answerTimining}) => {
+  socket.on("isWinner", ({ answerTimining }) => {
     console.log(" iswinner callled ")
     console.log(socket.coustomeId)
+    console.log("set have or not ",!Timings.has(socket.roomName))
+    
     if (!Timings.has(socket.roomName)) {
       console.log("inside if ")
-      const obj = { _id: socket.coustomeId, timing: answerTimining }
-      Timings.set(socket.roomName, [obj])
+      const obj = [{ _id: socket.coustomeId, timing: answerTimining }]
+      Timings.set(socket.roomName, obj)
       setTimeout(() => {
-      
+
         let id = null
         let currentTiming = Infinity
         for (let index = 0; index < Timings.get(socket.roomName).length; index++) {
@@ -141,17 +144,22 @@ io.on("connection", (socket) => {
           }
         }
         Timings.delete(socket.roomName)
+
         console.log("emiting to other users ")
+
         io.to(socket.roomName).emit("TRisWinner", { id: id })
-      }, 2000);
+      }, 5000);
     }
-    console.log("outside of if")
-    const obj = { _id: socket.coustomeId, timing: answerTimining }
-    const array = Timings.get(socket.roomName )
-    array.push(obj)
-    Timings.set(socket.roomName, array)
-    console.log(Timings.get(socket.roomName))
-    
+    else {
+
+      console.log("outside of if")
+      const obj = { _id: socket.coustomeId, timing: answerTimining }
+      const array = Timings.get(socket.roomName)
+      array.push(obj)
+      Timings.set(socket.roomName, array)
+      console.log(Timings.get(socket.roomName))
+    }
+
 
   })
 

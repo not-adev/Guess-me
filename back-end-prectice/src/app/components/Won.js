@@ -20,4 +20,4 @@ const Won = ({arrayOfData}) => {
     )
 }
 
-export default Won
+export default React.memo(Won)

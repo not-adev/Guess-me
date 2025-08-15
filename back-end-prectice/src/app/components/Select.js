@@ -41,11 +41,11 @@ const Select = ({ callback, id }) => {
   //         snaching: [
   //                      {
   //                       _id: dfonvoeu-- > Id from which we are snaching 
-  //                       coustomeId: 67 -- > id of pokemon
+  //                       pokemonId: 67 -- > id of pokemon
   //                      },
   //                      {
   //                       _id: dfonvoeu-- > Id from which we are snaching 
-  //                       coustomeId: 61 -- > id of pokemon
+  //                       pokemonId: 61 -- > id of pokemon
   //                      }
   //                   ]
 
@@ -56,11 +56,11 @@ const Select = ({ callback, id }) => {
   //         snaching: [
   //                      {
   //                       _id: dfonvoeu-- > Id from which we are snaching 
-  //                       coustomeId: 67 -- > id of pokemon
+  //                       pokemonId: 67 -- > id of pokemon
   //                      },
   //                      {
   //                       _id: dfonvoeu-- > Id from which we are snaching 
-  //                       coustomeId: 61 -- > id of pokemon
+  //                       pokemonId: 61 -- > id of pokemon
   //                      }
   //                   ]
 
@@ -107,9 +107,10 @@ const Select = ({ callback, id }) => {
 
     socket.current.on("TRdoneSelection", ({ id, selectedPokemons }) => {
       numberOfSelectionDone.current += 1
-      console.log(numberOfSelectionDone.current)
       const object = { _id: id, snaching: selectedPokemons }
-      setpokemonTransfer(prev => [...prev, object])
+      let newArray = pokemonTransfer
+      newArray.push(object)
+      setpokemonTransfer(newArray)
       allSelectioinDone()
     })
     DontSHowIfyourCards()
@@ -117,13 +118,16 @@ const Select = ({ callback, id }) => {
   }, [])
 
   function selectionDoneFromOurSide(number) {
-    console.log("selection done is called ")
-    console.log("nuber",number)
     const DoneSelection = number + 1 > allmembers.members.length ? true : false
     if (DoneSelection) {
+      socket.current.emit("giveId", {}, (callback) => {
+        const obj = { _id: callback._id, snaching: selectedPokemons }
+        let newArray = pokemonTransfer
+        newArray.push(obj)
+        setpokemonTransfer(newArray)
+      })
       socket.current.emit("doneSelection", { selectedPokemons })
       numberOfSelectionDone.current += 1
-      console.log(numberOfSelectionDone.current)
       setCuurentUserNumber(number)
       allSelectioinDone()
       return true
@@ -132,14 +136,10 @@ const Select = ({ callback, id }) => {
   }
 
   function DontSHowIfyourCards(number = 0) {
-    console.log("Dont show card called")
-    console.log(number)
     if (number + 1 > allmembers.members.length) {
       console.log("index our of bound")
       return
     }
-    console.log("id from allmember ", allmembers.members[number]._id)
-    console.log("my id", id)
     if (allmembers.members[number]._id == id) {
       console.log("moving to next one ")
       number += 1
@@ -168,6 +168,7 @@ const Select = ({ callback, id }) => {
       return
     }
     const arrray = selectedPokemons
+
     arrray.push(currentSelection)
     setSelectedPokemons(arrray)
     const increasedUserNumber = cuurentUserNumber + 1
@@ -176,8 +177,8 @@ const Select = ({ callback, id }) => {
       return
     }
 
-    if(DontSHowIfyourCards(increasedUserNumber)){
-      return 
+    if (DontSHowIfyourCards(increasedUserNumber)) {
+      return
     }
     setCuurentUserNumber(increasedUserNumber)
     setCurrentSelection(null)
@@ -189,9 +190,7 @@ const Select = ({ callback, id }) => {
 
 
   function allSelectioinDone() {
-    console.log("alldone call ")
     if (numberOfSelectionDone.current >= allmembers.members.length) {
-      console.log("all done complete")
       callback(pokemonTransfer, selectedPokemons)
     }
 
@@ -201,7 +200,6 @@ const Select = ({ callback, id }) => {
     const pokemonId = parseInt(e.target.value)
     const obj = { _id, pokemonId }
     setCurrentSelection(obj)
-    console.log(obj)
   }
 
   return (
@@ -223,9 +221,9 @@ const Select = ({ callback, id }) => {
             <div className='grid lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2  gap-7'>
 
               {allmembers.pokemonData[cuurentUserNumber].map((item) => {
-
+               
                 return (
-                  <div key={item.coustomeId} className='flex flex-col items-center gap-y-3 preserve-3d perspective-1000  justify-center'>
+                  <div key={item.coustome_id} className='flex flex-col items-center gap-y-3 preserve-3d perspective-1000  justify-center'>
                     <Cardcomponent data={item} />
 
                     <input className='m-auto h-[30px] w-[30px] b ' type="radio" name='card' value={item.coustome_id} onChange={(e) => handlechange(e)} />

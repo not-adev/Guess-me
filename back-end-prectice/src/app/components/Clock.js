@@ -6,19 +6,26 @@ const Clock = ({callback}) => {
 
 
     useEffect(() => {
-
+        let value = 11
         console.log("rerender")
         const clockInerval = setInterval(() => {
+            value -= 1 
 
-            setClock(value => {
-                if (value <= 0) {
-                    callback(true)
-                    console.log("clock turend 0 ")
-                    clearInterval(clockInerval)
-                    return 0
-                }
-                return value - 1
-            })
+            // setClock(value => {
+            //     if (value < 0) {
+            //         console.log("clock turend 0 ")
+            //         clearInterval(clockInerval)
+            //         callback(true)
+            //         return value
+            //     }
+            //     return value - 1
+            // })
+            if(value < 0){
+                callback(true)
+            }
+            else{
+                setClock(value)
+            }
 
         }, 1000);
 
