@@ -1,4 +1,5 @@
 import React from 'react'
+import Cardcomponent from './Cardcomponent'
 
 const Loose = ({arrayOfData = []}) => {
   return (

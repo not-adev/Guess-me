@@ -102,6 +102,7 @@ const singup_login = () => {
 
             }
             else {
+                  toast(<Logintoast img_url={"/login-failed-img.png"} message={"incorrect password"} />)
                 setislogin(true)
             }
              console.log(data)

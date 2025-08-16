@@ -276,7 +276,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
                         <div className='object-cover w-screen absolute h-[100vh] top-[-1] -z-5 opacity-55 bg-black' >
 
                         </div>
-                        <Loose />
+                        <Loose arrayOfData={cardtoshow} />
                         <div>
 
                             <button className='bg-green-500 text-white border-green-800 hover:bg-green-600 p-2 text-3xl border-2 rounded-lg ' onClick={() => Next()}>Next</button>

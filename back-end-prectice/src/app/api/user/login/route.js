@@ -16,6 +16,7 @@ export async function POST(request) {
         }
         const compare = await bcrypt.compare(password, userExist.password);
         if (!compare) {
+            console.log(compare)
             return NextResponse.json({ message: 'incorrect password or against email' }, { status: 400 })
         }
         const token = await jwt.sign({ id: userExist._id }, process.env.SECRET_KEY, { expiresIn: process.env.JWT_TOKEN_EXPIRY });
