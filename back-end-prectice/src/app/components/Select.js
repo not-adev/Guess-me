@@ -104,16 +104,22 @@ const Select = ({ callback, id }) => {
 
 
   useEffect(() => {
-
-    socket.current.on("TRdoneSelection", ({ id, selectedPokemons }) => {
+    
+    const handleDoneSelection = ({ id, selectedPokemons }) => {
       numberOfSelectionDone.current += 1
       const object = { _id: id, snaching: selectedPokemons }
       let newArray = pokemonTransfer
       newArray.push(object)
       setpokemonTransfer(newArray)
       allSelectioinDone()
-    })
+    }
+
+    socket.current.on("TRdoneSelection", handleDoneSelection)
     DontSHowIfyourCards()
+
+    return () => {
+     socket.current.off("TRdoneSelection", handleDoneSelection)
+    }
 
   }, [])
 
@@ -221,7 +227,7 @@ const Select = ({ callback, id }) => {
             <div className='grid lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2  gap-7'>
 
               {allmembers.pokemonData[cuurentUserNumber].map((item) => {
-               
+
                 return (
                   <div key={item.coustome_id} className='flex flex-col items-center gap-y-3 preserve-3d perspective-1000  justify-center'>
                     <Cardcomponent data={item} />

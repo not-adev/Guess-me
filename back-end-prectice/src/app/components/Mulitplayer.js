@@ -1,25 +1,32 @@
 "use client"
-import React, { useState , useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Select from './Select'
 import MultiplayerGame from './MultiplayerGame'
 import { useSocketContext } from '../multiplayer/context/SocketContext'
 
-const Mulitplayer = ({callback }) => {
+const Mulitplayer = ({ callback }) => {
   const socket = useSocketContext()
   const [pokemonTransfer, setpokemonTransfer] = useState([])
   const [showSelect, setShowSelect] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [myselection, setMyselection] = useState([])
   const [myid, setMyid] = useState("")
+  const [admin, setAdmin] = useState(false)
   useEffect(() => {
-     socket.current.emit("giveId",{},(callback)=>{
+    socket.current.emit("giveId", {}, (callback) => {
       setMyid(callback._id)
       setShowSelect(true)
-      console.log( callback._id)
+      console.log(callback._id)
+      socket.current.emit("isAdmin", {}, (callback) => {
+        setAdmin(callback.admin)
+      })
+      setLoading(false)
+      console.log(admin , "admin")
     })
-  
-    
+
+
   }, [])
-  
+
   // structure of pokemon tranfer
   // [
   //   {
@@ -54,7 +61,6 @@ const Mulitplayer = ({callback }) => {
   // ]
   function callbackFromSelect(pokemonTra, myselection) {
     console.log("callback form select")
-    
     setpokemonTransfer(pokemonTra)
     setMyselection(myselection)
     setShowSelect(false)
@@ -68,10 +74,13 @@ const Mulitplayer = ({callback }) => {
 
   return (
     <div>
-      {showSelect ?
+      {
+        loading ? <div>loading ....</div> :
 
-        <Select callback={callbackFromSelect} id={myid} /> : 
-        <MultiplayerGame myselection={myselection} callback={callbackFromGame} pokemonTransfer={pokemonTransfer} />
+          showSelect ?
+
+            <Select callback={callbackFromSelect} id={myid} /> :
+            <MultiplayerGame myselection={myselection} admin={admin} callback={callbackFromGame} pokemonTransfer={pokemonTransfer} />
 
       }
 

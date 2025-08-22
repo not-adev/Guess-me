@@ -8,6 +8,7 @@ export async function POST(request) {
         await connect_to_db()
         const reqbody = await request.json()
         const { pokemonArrray } = reqbody
+        console.log(pokemonArrray)
         const token = request.cookies.get('token')?.value || ''
         const _id = get_id(token)
         const exist = await User.findById(_id)

@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useGroupMemberContext } from '../context/GroupMemberContext'
 import { useSocketContext } from '../context/SocketContext';
 import Mulitplayer from '@/app/components/Mulitplayer';
+import MultiplayerTable from '@/app/components/MultiplayerTable';
 const joinRoom = () => {
   let S_no = 0
   const [showgame, setShowgame] = useState(false)
@@ -39,39 +40,59 @@ const joinRoom = () => {
   const [loading, setLoading] = useState(false)
   const [show, setshow] = useState(false)
   const [roomName, setRoomName] = useState("")
+  const [emiting, setemiting] = useState(false)
+
+  async function setup() {
+    if(!emiting){
+      return
+    }
+    const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/getuserdata`);
+    const resJ = await res.json();
+    const userData = resJ.data;
+    console.log(userData)
+    const ft = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/game/displaypokemon`)
+    const { data } = await ft.json()
+    setPokemons(data)
+    console.log(data)
+    socket.current.emit("joinRoom", { data: userData, roomName:"nothing", pokemonData: data })
+  }
+
 
   useEffect(() => {
     socket.current = io(`${process.env.NEXT_PUBLIC_SOCKETCONNECTION}`)
     async function getpokemons() {
-
       const ft = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/game/displaypokemon`)
       const { data } = await ft.json()
-      console.log(data)
+   
       setPokemons(data)
-
-      
     }
     getpokemons()
 
     socket.current.on("roomDeleted", ({ }) => {
       callToast("Admin deleted the rooom ")
+      console.log("Admin deleted the rooom")
+      socket.current.emit("TRroomDeleted", {})
+      setemiting(false)
       setshow(false)
+      console.log(allmembers)
+
 
     })
     socket.current.on("changeArray", ({ updated_Members, updated_pokemonData }) => {
-      console.log("nwe joining")
+      console.log("change array ")
       const allmembers = { members: updated_Members, pokemonData: updated_pokemonData }
       console.log("allmembers", allmembers)
       setAllmembers(allmembers)
+      setemiting(true)
+
 
 
     })
-    socket.current.on("TRshowSelect", ({}) => {
+    socket.current.on("TRshowSelect", ({ }) => {
       console.log("show start pannel")
       setShowgame(true)
     })
 
-    console.log(pokemons)
     console.log(allmembers)
     return () => {
       if (socket.current) {
@@ -80,7 +101,7 @@ const joinRoom = () => {
     };
   }, [])
 
-   function callbackFromMultiplayer(){
+  function callbackFromMultiplayer() {
     setShowgame(false)
   }
 
@@ -90,25 +111,22 @@ const joinRoom = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const name = roomName
-      name.trim()
+      const name = roomName.trim()
+      const trimedName = name.trim()
       const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/getuserdata`);
       const resJ = await res.json();
       const userData = resJ.data;
+    
 
-      socket.current.emit("joinRoom", { data: userData, roomName: name, pokemonData: pokemons }, (callback) => {
-
-        if (callback.members) {
-          console.log(callback.members)
-          const allmembers = { members: callback.members, pokemonData: callback.pokemonData }
-          console.log(allmembers)
-          setAllmembers(allmembers)
+      socket.current.emit("joinRoom", { data: userData, roomName: trimedName, pokemonData: pokemons }, (callback) => {
+        if (callback.res) { 
+          setRoomName("")
           setshow(true)
-
+      
         }
         else {
-          console.log("inside else")
           callToast("No room found with given name")
+          console.log("No room found with given name")
         }
       })
 
@@ -135,43 +153,9 @@ const joinRoom = () => {
             </form>
           </div>)
           :
-          showgame ? <Mulitplayer callback={callbackFromMultiplayer}/> :
-            (<div className='flex items-center justify-center flex-col h-screen'>
-              <div className='w-[70%] relative mt-auto p-3  m-auto flex items-center justify-center flex-col '>
-
-
-                <div className='text-4xl font-bold m-8'>Your Room </div>
-                <div className=' w-full m-4 flex items-end justify-around'>
-                  <div>
-                    Room Name
-
-                  </div>
-                  <div>{roomName}</div>
-                </div>
-                <div className='my-2.5'>IN Room </div>
-                <table className='divide-y w-full divide-gray-200'>
-                  <thead className='gap-2 bg-gray-800'>
-                    <tr className='text-center'>
-                      <th className='px-6 py-3  text-xs font-medium text-white uppercase tracking-wider'>S.NO</th>
-                      <th className='px-6 py-3  text-xs font-medium text-white uppercase tracking-wider'>Name</th>
-                      <th className='px-6 py-3  text-xs font-medium text-white uppercase tracking-wider'>Admin/Player</th>
-                    </tr>
-                  </thead>
-                  <tbody className='bg-white divide-y text-center divide-gray-200'>
-                    {allmembers.members.map((item, index) => {
-                      S_no++
-                      return (
-                        <tr key={index}>
-                          <td className='px-6 py-4 whitespace-nowrap'>{S_no}</td>
-                          <td>{item.userName}</td>
-                          <td>{item.admin ? "Admin" : "Player"}</td>
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>)
+          showgame ? <Mulitplayer callback={callbackFromMultiplayer} /> :
+           
+            <MultiplayerTable useEffectFuntion={setup} admin={false} />
       }
       <div><ToastContainer /></div>
     </div>

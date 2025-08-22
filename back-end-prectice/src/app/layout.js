@@ -2,6 +2,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { PokemonProvider } from "./context/PokemonContext";
+import { ToastContainer } from "react-toastify";
 // import { GroupMemberProvider } from "./multiplayer/context/GroupMemberContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,11 @@ export default function RootLayout({ children }) {
           <PokemonProvider> 
           
 
+             <div>
              {children} 
+
+              <ToastContainer />
+             </div>
          
           </PokemonProvider>
        

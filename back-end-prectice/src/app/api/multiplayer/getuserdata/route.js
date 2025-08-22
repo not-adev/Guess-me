@@ -10,7 +10,7 @@ export async function GET(request) {
     const id = await get_id(token)
     
     const user = await User.findOne({ _id: id },{pokemon : 1, userName : 1})
-    console.log(user)
+    // console.log(user)
     if (!user) return NextResponse.json({ message: 'invalid token ' })
     return NextResponse.json({
       message: 'data send ',

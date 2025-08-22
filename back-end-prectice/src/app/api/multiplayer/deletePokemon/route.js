@@ -9,6 +9,7 @@ export async function POST(request) {
         await connect_to_db()
         const reqbody = await request.json()
         const { coustomeId } = reqbody
+        console.log(coustomeId)
         const token = request.cookies.get('token')?.value || ''
         if (!token) {
             return NextResponse.json({ message: "token not find" }, { status: 400 })

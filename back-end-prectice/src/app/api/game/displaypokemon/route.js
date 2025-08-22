@@ -9,7 +9,7 @@ export async function GET(request) {
         const token = request.cookies.get('token')?.value || ''  
         const _id = get_id(token)
         const {pokemon} = await User.findById(_id,{pokemon : 1 , _id : 0 })
-        console.log(pokemon)
+        
         if(pokemon.length <= 0){
             console.log("length is zero")
             return NextResponse.json({data : []},{status : 200})

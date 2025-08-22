@@ -8,15 +8,16 @@ import Multiplayerbutton from './Multiplayerbutton'
 import { useGroupMemberContext } from '../multiplayer/context/GroupMemberContext'
 import Loose from '../components/Loose'
 
-const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
+const MultiplayerGame = ({ pokemonTransfer, myselection, callback, admin }) => {
     const socket = useSocketContext()
     const router = useRouter()
     const { allmembers, setAllmembers } = useGroupMemberContext()
-   
+
     const [showclock, setShowclock] = useState(true)
     const [data, setData] = useState([{ img: "", coustome_id: 0 }])
     const [loading, setloading] = useState(false)
     const [visible, setVisible] = useState(true)
+    const [Draw, setDraw] = useState(false)
     const [YouWon, setWon] = useState(false)
     const [YoueLoose, setLoose] = useState(false)
     const [blured, setBlured] = useState(true)
@@ -36,17 +37,20 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
                 timing : 38683738939,
             }
         ]
-        
+
     */}
     const answer = useRef(false);
     const answerTimining = useRef(null)
     useEffect(() => {
         console.log(pokemonTransfer)
         console.log(myselection)
-        const handleStart = async () => {
+        const handleStart = (data) => {
             console.log("tr of start game")
+            console.log(data.data)
+            setData(data.data)
             setVisible(false)
-            await getPokemon()
+            setloading(false)
+
         }
         const handleWinner = ({ id }) => {
             console.log("TRwinner emit received ")
@@ -55,8 +59,12 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
             socket.current.emit("giveId", {}, async (callback) => {
                 myid = callback._id
                 console.log(myid)
+                if (id == null) {
+                    setDraw(true)
+                    return
+                }
                 if (myid != id) {
-                    console.log("loose")
+                    console.log("loose")    
                     for (let index = 0; index < pokemonTransfer.length; index++) {
                         const e = pokemonTransfer[index];
                         console.log(e)
@@ -76,7 +84,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
 
                     }
                     console.log(pokemonId.current)
-                    fetch(
+                   await fetch(
                         `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/deletePokemon`,
                         {
                             method: 'POST',
@@ -90,8 +98,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
 
                         }
                     )
-                        .then((res) => res.json())
-                        .then(data => console.log(data.message))
+                       
                     const showcardData = [{ id: myid, pokemonId: pokemonId.current }]
                     const ft = await fetch(
                         `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/showCard`,
@@ -113,7 +120,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
                 }
                 else {
                     console.log("adding")
-                    fetch(
+                    await fetch(
                         `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/addPokemon`,
                         {
                             method: 'POST',
@@ -127,8 +134,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
 
                         }
                     )
-                        .then((res) => res.json())
-                        .then(data => console.log(data.message))
+                       
 
                     const ft = await fetch(
                         `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/showCard`,
@@ -165,37 +171,32 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
 
     }, [])
 
-    const start = () => {
+    const start = async () => {
         console.log("start called ")
-        socket.current.emit("startGame", {})
+        setloading(true)
+        const data = await getPokemon()
+        socket.current.emit("startGame", data)
+
     }
 
     const Quite = () => {
-       setAllmembers({members : [] , pokemonData : []})
-       router.push("/main")
-       
+        setAllmembers({ members: [], pokemonData: [] })
+        router.push("/main")
     }
 
 
 
     const Next = () => {
         callback(1)
-
     }
 
     const getPokemon = useCallback(async () => {
-        setloading(true)
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/game/getpokemon`);
             const data = await res.json();
-            setData(data);
-            console.log(data);
+            return data
         } catch (error) {
             console.error("fetch failed", error);
-        } finally {
-            setTimeout(() => {
-                setloading(false);
-            }, 3000);
         }
 
 
@@ -218,13 +219,9 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
     const callbackFromClock = useCallback(() => {
         setBlured(false)
         setShowclock(false)
-        if (answer.current == true) {
-            console.log("emiting is winner")
-            socket.current.emit("isWinner", { answerTimining: answerTimining.current })
-        }
-        else {
-            socket.current.emit("loose", {})
-        }
+        console.log("emiting is winner")
+        socket.current.emit("isWinner", { answer: answer.current, answerTimining: answerTimining.current })
+
         console.log(answer.current, answerTimining.current)
 
     }, [])
@@ -235,7 +232,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
     return (
         <>
 
-            <div className='relative bg-[url(https://i.pinimg.com/736x/a7/28/3d/a7283d0be1ea71142e4d92d189299a32.jpg)] h-screen flex flex-col items-center bg-cover bg-no-repeat   text-white'>
+            <div className='relative bg-yellow-400 h-screen flex flex-col items-center bg-cover bg-no-repeat   text-white'>
 
                 {visible &&
                     <div className='border absolute bg-white text-black rounded-2xl left-[50%] top-[50%] flex flex-col items-center gap-4 p-3 translate-y-[-50%] transform translate-x-[-50%]'>
@@ -245,10 +242,36 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
                         </div>
                         <div>
 
-                            <button className='bg-green-500 text-white border-green-800 p-2 text-3xl border-2 rounded-lg ' onClick={() => start()}>Start</button>
+                            {admin ?
+
+                                <button className='bg-green-500 text-white border-green-800 p-2 text-3xl border-2 rounded-lg ' onClick={() => start()}>Start</button>
+                                : null
+                            }
                         </div>
                     </div>
                 }
+
+
+                {
+                    Draw &&
+                    <div className=' absolute z-40 text-black rounded-2xl  flex flex-col items-center gap-4 px-  transform]'>
+                        <div className='object-cover w-screen absolute h-[100vh] top-[-1] -z-5 opacity-55 bg-black' >
+                        </div>
+                        <div>
+                            Draw
+                        </div>
+
+                        <div>
+
+                            <button className='bg-green-400 mx-3 text-white border-green-800 p-2 text-3xl hover:bg-green-600 border-2 rounded-lg ' onClick={() => Next()}>Next</button>
+                            <button className='bg-red-600 text-white border-red-800 p-2 text-3xl  hover:bg-red-700 border-2 rounded-lg ' onClick={() => Quite()}>Quite</button>
+
+                        </div>
+                    </div>
+
+                }
+
+
                 {YouWon &&
                     <div className=' absolute z-40 text-black rounded-2xl  flex flex-col items-center gap-4 px-  transform]'>
                         <div className='object-cover w-screen absolute h-[100vh] top-[-1] -z-5 opacity-55 bg-black' >
@@ -256,7 +279,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
                         </div>
 
 
-                        
+
                         <Won arrayOfData={cardtoshow} />
 
 
@@ -289,7 +312,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
 
                 {
                     loading &&
-                    <div><img src="/public/loading-img.gif" alt="loading.." className='rounded-full absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' /></div>
+                    <div><img src="public/loading-img.gif" alt="loading.." className='rounded-full absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' /></div>
                 }
                 {data.length > 2 && !loading && !visible &&
                     <div className={`w-[70%] m-auto  border flex items-center justify-center `}>
@@ -305,7 +328,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback }) => {
                                 </button>
                             </div>
 
-                            <img src={data[0].img} alt="img" className={`object-contain1 transform transition-all duration-1000 ${blured ? "brightness-0 " : "brightness-100"}`} />
+                            <img src={data[0].img} alt="img" className={`object-contain1 transform transition-all duration-3000 ${blured ? "brightness-0 " : "brightness-100"}`} />
 
                         </div>
                         <div className='w-full m-auto '>
