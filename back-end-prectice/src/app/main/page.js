@@ -11,9 +11,9 @@ const Main = () => {
     const router = useRouter()
     const [required, setRequired] = useState(0)
     const sliderItem = useRef(null)
-    const {pokemons,setPokemons} = usePokemonContext()
+    const { pokemons, setPokemons } = usePokemonContext()
     const index = useRef(0);
-   
+
     useEffect(() => {
         let slidemove = setInterval(() => {
             showSlide(index.current + 1)
@@ -32,7 +32,7 @@ const Main = () => {
                 // router.push(`${process.env.NEXT_PUBLIC_DOMAIN}/user_login_sinup`)
             }
         }
-        
+
         fetchPekemons()
 
         return () => {
@@ -62,11 +62,14 @@ const Main = () => {
             <Navbar />
 
 
-            <div className='slider  w-[100%] sm:w-[90%] md:w-[70%] mb-5 mt-6 overflow-hidden  m-auto'>
+            <div className='slider sm:w-[90%] md:w-[70%] mb-15 mt-6 overflow-hidden h-auto m-auto'>
                 <div ref={sliderItem} className='slider-item  w-[500%] transition-transform duration-1000  flex'>
                     <div className='w-[20%]'>
-                        <div className='h-[350px] bg-yellow flex relative w-[100%] m-auto  '>
-                            <div className='absol bg-[rgba(0,0,0,.8)] w-[30%] text-center p-2 rounded-lg rounded-r-none h-full '>
+                        <div className='md:h-[350px] bg-yellow md:flex bg-re-600  relative w-[100%] m-auto  '>
+
+
+                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img1.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg w-full  md:w-[70%]  md:h-auto h-[400px] ' />
+                            <div className=' bg-[rgba(0,0,0,.8)] w-full md:w-[30%] text-center p-2 md:rounded-lg md:rounded-l-none rounded-b-lg md:h-full '>
                                 <div> info </div>
                                 <div>
                                     features
@@ -77,14 +80,17 @@ const Main = () => {
                             </div>
 
 
-                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img1.jpg" alt="img" className='rounded-lg rounded-l-none w-[70%]  ' />
+
 
 
                         </div>
                     </div>
                     <div className='w-[20%] '>
-                        <div className='h-[350px] bg-yellow flex relative w-[100%] m-auto  '>
-                            <div className='absol bg-[rgba(0,0,0,.8)] w-[30%] text-center p-2 rounded-lg rounded-r-none h-full '>
+                        <div className='md:h-[350px] bg-yellow md:flex relative w-[100%] m-auto  '>
+
+
+                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img2.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg w-full md:w-[70%]  md:h-auto h-[400px]  ' />
+                            <div className='absol bg-[rgba(0,0,0,.8)] md:w-[30%] text-center p-2 md:rounded-lg md:rounded-l-none rounded-b-lg w-full md:h-full '>
                                 <div> info </div>
                                 <div>
                                     features
@@ -93,16 +99,16 @@ const Main = () => {
                                     backchodi
                                 </div>
                             </div>
-
-
-                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img2.jpg" alt="img" className='rounded-lg rounded-l-none w-[70%]  ' />
 
 
                         </div>
                     </div>
                     <div className='w-[20%] '>
-                        <div className='h-[350px] bg-yellow flex relative w-[100%] m-auto  '>
-                            <div className='absol bg-[rgba(0,0,0,.8)] w-[30%] text-center p-2 rounded-lg rounded-r-none h-full '>
+                        <div className='md:h-[350px] md:flex relative w-[100%] m-auto  '>
+
+
+                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img3.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg  md:w-[70%] w-full md:h-auto h-[400px]  ' />
+                            <div className=' bg-[rgba(0,0,0,.8)] md:w-[30%] w-full text-center p-2 md:rounded-lg md:rounded-l-none rounded-b-lg md:h-full '>
                                 <div> info </div>
                                 <div>
                                     features
@@ -111,16 +117,16 @@ const Main = () => {
                                     backchodi
                                 </div>
                             </div>
-
-
-                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img3.jpg" alt="img" className='rounded-lg rounded-l-none w-[70%]  ' />
 
 
                         </div>
                     </div>
                     <div className='w-[20%] '>
-                        <div className='h-[350px] bg-yellow flex relative w-[100%] m-auto  '>
-                            <div className='absol bg-[rgba(0,0,0,.8)] w-[30%] text-center p-2 rounded-lg rounded-r-none h-full '>
+                        <div className='md:h-[350px] md:flex relative w-[100%] m-auto  '>
+
+
+                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img4.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg  md:w-[70%] w-full md:h-auto h-[400px]  ' />
+                            <div className=' bg-[rgba(0,0,0,.8)] md:w-[30%] w-full text-center p-2 md:rounded-lg md:rounded-l-none rounded-b-lg md:h-full '>
                                 <div> info </div>
                                 <div>
                                     features
@@ -129,16 +135,16 @@ const Main = () => {
                                     backchodi
                                 </div>
                             </div>
-
-
-                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img4.jpg" alt="img" className='rounded-lg rounded-l-none w-[70%]  ' />
 
 
                         </div>
                     </div>
                     <div className='w-[20%] '>
-                        <div className='h-[350px] bg-yellow flex relative w-[100%] m-auto  '>
-                            <div className='absol bg-[rgba(0,0,0,.8)] w-[30%] text-center p-2 rounded-lg rounded-r-none h-full '>
+                        <div className='md:h-[350px] md:flex relative w-[100%] m-auto  '>
+
+
+                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img5.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg  md:w-[70%] w-full md:h-auto h-[400px]   ' />
+                            <div className=' bg-[rgba(0,0,0,.8)] md:w-[30%] w-full text-center p-2 md:rounded-lg md:rounded-l-none rounded-b-lg md:h-full '>
                                 <div> info </div>
                                 <div>
                                     features
@@ -147,9 +153,6 @@ const Main = () => {
                                     backchodi
                                 </div>
                             </div>
-
-
-                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img5.jpg" alt="img" className='rounded-lg rounded-l-none w-[70%]  ' />
 
 
                         </div>
@@ -184,7 +187,7 @@ const Main = () => {
                 <div className=' bg-[#292e38] bg-cover h-[150px] w-[290px] md:w-auto lg:w-[290px] justify-center  flex items-center gap-2 px-3'>
                     <img className='invert-100 ' src="https://img.icons8.com/external-outline-andi-nur-abdillah/64/external-Multiplayer-gaming-(outline)-outline-andi-nur-abdillah.png" alt="external-Multiplayer-gaming-(outline)-outline-andi-nur-abdillah" />
                     <div className=' font-bold '>
-                      <Link href = "/multiplayer"> Multiplayer</Link> 
+                        <Link href="/multiplayer"> Multiplayer</Link>
                     </div>
                 </div>
 
@@ -199,8 +202,8 @@ const Main = () => {
                 <div className='w-[70%] bg-red-500 h-[8px]'>
                 </div>
             </div>
-            <Map/>
-           
+            <Map />
+
             <div className='footer mt-20 pt-4 bg-black shadow-[0px_-7px_20px_9px_black] '>
                 <div className='px-7 font-bold text-3xl'>
 

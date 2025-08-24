@@ -84,9 +84,8 @@ io.on("connection", (socket) => {
   })
 
   socket.on("joinRoom", ({ data, roomName, pokemonData }, callback) => {
-    console.log(socket.coustomeId, "couroe ")
-    console.log(roomName, 'roomname')
-    console.log(Rooms.has(roomName))
+   
+
     if (socket.roomName !== undefined) {
       console.log("already in join room ")
       return ReturnToRoomInterface(socket, data, pokemonData)
@@ -128,8 +127,7 @@ io.on("connection", (socket) => {
 
 
   socket.on("doneSelection", ({ selectedPokemons }) => {
-    console.log("done selection call ")
-    console.log(selectedPokemons)
+  
     socket.to(socket.roomName).emit("TRdoneSelection", { id: socket.coustomeId, selectedPokemons })
   })
 
@@ -144,9 +142,7 @@ io.on("connection", (socket) => {
   })
 
   socket.on("isWinner", ({ answer, answerTimining }) => {
-    console.log(" iswinner callled ")
-    console.log(socket.coustomeId)
-    console.log("set have or not ", !Timings.has(socket.roomName))
+ 
 
     if (!Timings.has(socket.roomName)) {
       console.log("inside if ")
@@ -172,7 +168,7 @@ io.on("connection", (socket) => {
     }
     else {
 
-      console.log("outside of if")
+     
       const obj = { _id: socket.coustomeId, timing: answerTimining, answer: answer }
       const array = Timings.get(socket.roomName)
       array.push(obj)
@@ -200,8 +196,8 @@ io.on("connection", (socket) => {
       const value = { members: [data], pokemonData: [pokemonData] }
       Rooms.set(socket.roomName, value)
     }
-    console.log(pokemonData)
-    console.log(data)
+  
+    
     io.to(socket.roomName).emit("changeArray", { updated_Members: Rooms.get(socket.roomName).members, updated_pokemonData: Rooms.get(socket.roomName).pokemonData })
 
 
@@ -234,6 +230,10 @@ io.on("connection", (socket) => {
 
       else {
         const player = Rooms.get(socket.roomName).members.findIndex(item => item._id == socket.coustomeId)
+        console.log(player)
+        if(player < 0){
+          return
+        }
         Rooms.get(socket.roomName).members.splice(player, 1)
         Rooms.get(socket.roomName).pokemonData.splice(player, 1)
         io.to(socket.roomName).emit("changeArray", { updated_Members: Rooms.get(socket.roomName).members, updated_pokemonData: Rooms.get(socket.roomName).pokemonData })

@@ -75,7 +75,7 @@ const UserHome = () => {
                     </div > :
                     <div className='w-[100%]  p-5'>
 
-                        <div className=' flex gap-6 pb-9 '>
+                        <div className=' flex flex-col md:flex-row gap-6 pb-9 '>
                             <div className='flex  md:w-[20%] self-start gap-1 flex-col justify-center items-cente'>
                                 <img src="/user.png" alt="img" className='h-[150px] w-[150px] border border-black rounded-xl invert-100 mt-3' />
 
@@ -83,12 +83,11 @@ const UserHome = () => {
                                     {userData.userName}
                                 </div>
                             </div>
-                            <div className='w-full pt-12 text-black  '>
+                            <div className='w-full md:pt-12  text-black  '>
 
                                 <span className='bg-[#E9F2A2] rounded-lg px-3 ' >Total number of pokemon Catched :- {userData.pokemon.length}</span><br />
                                 <span className='bg-green-400 pb-0.5 mt-3 rounded-lg px-3'>Region Uncloked :- {regionUnlcked}</span>
                             </div>
-                            {/* <button onClick={log_out} className='border-2 bg-white text-black rounded-lg fixed right-5 border-white font-semibold px-2'>Log Out</button> */}
                         </div>
 
                         <Galary />
