@@ -23,7 +23,7 @@ export default async function sendEmail({ email, emailType ,user}) {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'ansariarif123111@gmail.com',
+            user: 'rcduaru2718@gmail.com',
             pass: `${process.env.APP_PASSWORD}`,
         },
     });
