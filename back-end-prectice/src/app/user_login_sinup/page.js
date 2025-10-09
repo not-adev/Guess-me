@@ -81,7 +81,7 @@ const singup_login = () => {
             if (islogin) {
                 request = "login"
             }
-            const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/user/${request}`, {
+            const res = await fetch(`/api/user/${request}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -97,7 +97,7 @@ const singup_login = () => {
             else if (code == 1) {
                 toast(<Logintoast img_url={"/login-failed-img.png"} message={"Login succesfull"} />)
                 setTimeout(() => {
-                    router.push(`${process.env.NEXT_PUBLIC_DOMAIN}/main`)
+                    router.push(`/main`)
                 }, 1000);
 
             }

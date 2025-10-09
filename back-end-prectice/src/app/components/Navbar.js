@@ -8,7 +8,7 @@ const Navbar = () => {
   const router = useRouter()
 
   async function logout() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/user/logout`)
+    const res = await fetch(`/api/user/logout`)
     const resj = await res.json()
   }
 
@@ -20,11 +20,11 @@ const Navbar = () => {
         Guess Me !
       </div>
       <ul className='md:flex gap-6 items-center hidden  '>
-        <li><Link href={`${process.env.NEXT_PUBLIC_DOMAIN}/main`}>Home</Link></li>
+        <li><Link href={`/main`}>Home</Link></li>
         <li>Modes</li>
         <li><Link href={`/user`}>Gallery</Link> </li>
         <li className='group'>
-          <Link href={`${process.env.NEXT_PUBLIC_DOMAIN}/user`}>
+          <Link href={`/user`}>
             <img src="/user.png" alt="img" className='h-[30px] w-[30px] border border-black rounded-xl invert-100 my-3' />
 
           </Link>
@@ -39,15 +39,15 @@ const Navbar = () => {
 
         <ul className='group-hover:flex cursor-pointer hidden flex-col items-center justify-center bg-black border rounded-lg p-1 -left-7  absolute'>
           <li className='hover:invert-20 invert-0 '>
-            <Link href={`${process.env.NEXT_PUBLIC_DOMAIN}/user`}>
+            <Link href={`/user`}>
 
               <img src="user.png" alt="img" className='h-[30px] w-[30px] border border-black rounded-xl invert-100 my-3 ' />
               <div> </div>
             </Link>
           </li>
-          <li className='hover:text-gray-500'><Link href={`${process.env.NEXT_PUBLIC_DOMAIN}/main`}>Home</Link></li>
+          <li className='hover:text-gray-500'><Link href={`/main`}>Home</Link></li>
           <li className='hover:text-gray-500'>Modes</li>
-          <li className='hover:text-gray-500'><Link href={`${process.env.NEXT_PUBLIC_DOMAIN}/user`}>Gallery</Link> </li>
+          <li className='hover:text-gray-500'><Link href={`/user`}>Gallery</Link> </li>
           <li>
             <button onClick={logout} className='border-2 text-lg hover:text-gray-500 cursor-pointer rounded-lg  right-5 font-semibold px-2'>
               Logout

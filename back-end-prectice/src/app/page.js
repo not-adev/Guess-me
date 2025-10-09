@@ -47,8 +47,8 @@ export default function Home() {
 
       <div className={contentvisible ? " absolute top-0 left-0 bg-[url(/pokeball-bg.gif)] md:h-screen h-auto bg-no-repeat bg-cover bg-center  " : "hidden"}>
         <div className="flex  justify-end items-center gap-2 mt-4 mx-3" >
-          <button className=" font-bold rounded-lg  bg-black hover:bg-white hover:text-black text-white  py-1 px-7 "><Link  href={`${process.env.NEXT_PUBLIC_DOMAIN}/user_login_sinup`}>SignUp</Link></button>
-          <button className=" font-bold rounded-lg  bg-black hover:bg-white hover:text-black text-white  py-1 px-7 "><Link  href={`${process.env.NEXT_PUBLIC_DOMAIN}/user_login_sinup`}>Login</Link></button>
+          <button className=" font-bold rounded-lg  bg-black hover:bg-white hover:text-black text-white  py-1 px-7 "><Link  href={`/user_login_sinup`}>SignUp</Link></button>
+          <button className=" font-bold rounded-lg  bg-black hover:bg-white hover:text-black text-white  py-1 px-7 "><Link  href={`/user_login_sinup`}>Login</Link></button>
         </div>
 
         <div className="md:flex">
@@ -65,7 +65,7 @@ export default function Home() {
               </div>
 
               <button className="bg-white text-black mix-blend-screen font-bold text-5xl  px-6 py-2 mt-10 rounded-lg cursor-pointer ">
-                <Link href={`${process.env.NEXT_PUBLIC_DOMAIN}/user_login_sinup`}> Get Started</Link>
+                <Link href={`/user_login_sinup`}> Get Started</Link>
                
               </button>
 

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 const page = () => {
     useEffect(() => {
         fetch(
-            `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/addPokemon`,
+            `/api/multiplayer/addPokemon`,
             {
                 method: 'POST',
                 headers: {

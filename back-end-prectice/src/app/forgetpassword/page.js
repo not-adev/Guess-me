@@ -35,7 +35,7 @@ const page = () => {
                     setStatus('New passwords do not match ❌');
                     return;
                 }
-                const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/user/changePassword`, {
+                const res = await fetch(`/api/user/changePassword`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -88,7 +88,7 @@ const page = () => {
                 return
             }
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/sendEmail`, {
+            const res = await fetch(`/api/sendEmail`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: data.email, emailType: "forgetpassword" })

@@ -46,11 +46,11 @@ const joinRoom = () => {
     if(!emiting){
       return
     }
-    const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/getuserdata`);
+    const res = await fetch(`/api/multiplayer/getuserdata`);
     const resJ = await res.json();
     const userData = resJ.data;
     console.log(userData)
-    const ft = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/game/displaypokemon`)
+    const ft = await fetch(`/api/game/displaypokemon`)
     const { data } = await ft.json()
     setPokemons(data)
     console.log(data)
@@ -61,7 +61,7 @@ const joinRoom = () => {
   useEffect(() => {
     socket.current = io(`${process.env.NEXT_PUBLIC_SOCKETCONNECTION}`)
     async function getpokemons() {
-      const ft = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/game/displaypokemon`)
+      const ft = await fetch(`/api/game/displaypokemon`)
       const { data } = await ft.json()
    
       setPokemons(data)
@@ -113,7 +113,7 @@ const joinRoom = () => {
     try {
       const name = roomName.trim()
       const trimedName = name.trim()
-      const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/getuserdata`);
+      const res = await fetch(`/api/multiplayer/getuserdata`);
       const resJ = await res.json();
       const userData = resJ.data;
     

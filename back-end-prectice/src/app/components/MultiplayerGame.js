@@ -85,7 +85,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback, admin }) => {
                     }
                     console.log(pokemonId.current)
                    await fetch(
-                        `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/deletePokemon`,
+                        `/api/multiplayer/deletePokemon`,
                         {
                             method: 'POST',
                             headers: {
@@ -101,7 +101,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback, admin }) => {
                        
                     const showcardData = [{ id: myid, pokemonId: pokemonId.current }]
                     const ft = await fetch(
-                        `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/showCard`,
+                        `/api/multiplayer/showCard`,
                         {
                             method: 'POST',
                             headers: {
@@ -121,7 +121,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback, admin }) => {
                 else {
                     console.log("adding")
                     await fetch(
-                        `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/addPokemon`,
+                        `/api/multiplayer/addPokemon`,
                         {
                             method: 'POST',
                             headers: {
@@ -137,7 +137,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback, admin }) => {
                        
 
                     const ft = await fetch(
-                        `${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/showCard`,
+                        `/api/multiplayer/showCard`,
                         {
                             method: 'POST',
                             headers: {
@@ -192,7 +192,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback, admin }) => {
 
     const getPokemon = useCallback(async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/game/getpokemon`);
+            const res = await fetch(`/api/game/getpokemon`);
             const data = await res.json();
             return data
         } catch (error) {

@@ -22,14 +22,14 @@ const Main = () => {
 
         async function fetchPekemons() {
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/game/displaypokemon`)
+                const res = await fetch(`/api/game/displaypokemon`)
                 const { data } = await res.json()
                 setPokemons(data)
                 console.log(data)
             } catch (error) {
                 // alert("some error ocuured while showing collecting your data")
                 console.log(error.message)
-                // router.push(`${process.env.NEXT_PUBLIC_DOMAIN}/user_login_sinup`)
+              
             }
         }
 

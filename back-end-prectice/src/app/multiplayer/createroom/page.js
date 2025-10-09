@@ -25,12 +25,12 @@ const createRoom = () => {
 
   async function setup() {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/multiplayer/getuserdata`);
+      const res = await fetch(`/api/multiplayer/getuserdata`);
       const resJ = await res.json();
       const userData = resJ.data;
       console.log(userData)
       setGroupName(userData._id)
-      const ft = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/game/displaypokemon`)
+      const ft = await fetch(`/api/game/displaypokemon`)
       const { data } = await ft.json()
       console.log(data)
       setPokemons(data)

@@ -41,7 +41,7 @@ const Map = () => {
 
         if (length >= numberReq) {
 
-            router.push(`${process.env.NEXT_PUBLIC_DOMAIN}/game`)
+            router.push(`/game`)
         }
         else {
             setVisible(true)

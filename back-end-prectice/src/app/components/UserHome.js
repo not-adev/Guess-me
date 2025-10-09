@@ -12,7 +12,7 @@ const UserHome = () => {
     useEffect(() => {
         async function getdata() {
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/user/me`)
+                const res = await fetch(`/api/user/me`)
                 const { data } = await res.json()
                 const length = data.pokemon.length
                 if (length >= 45) {
@@ -42,7 +42,7 @@ const UserHome = () => {
                 setuserData(data)
             } catch (error) {
                 alert("some error occured try again later")
-                router.push(`${process.env.NEXT_PUBLIC_DOMAIN}/main`)
+                router.push(`/main`)
             }
             finally {
 
