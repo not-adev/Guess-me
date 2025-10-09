@@ -1,13 +1,15 @@
+"use client"
 import React,{useState , useEffect} from 'react'
 import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 const verify = () => {
     const router = useRouter()
     const [status, setStatus] = useState("verfying...")
-    const queryParams = new URLSearchParams(window.location.search);
+    const queryParams = useSearchParams()
     const token = queryParams.get('token');
     const emailType = queryParams.get('emailType')
     useEffect(() => {
-        fetch(`${process.env.DOMAIN}/api/verify`, {
+        fetch(`/api/user/verify`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
