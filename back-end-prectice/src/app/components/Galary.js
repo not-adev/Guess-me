@@ -5,20 +5,15 @@ import { usePokemonContext } from '../context/PokemonContext'
 
 const Galary = () => {
     const { pokemons, setPokemons } = usePokemonContext()
-    const [loading, setLoading] = useState(false)
+    // const [loading, setLoading] = useState(false)
     const [Type, setType] = useState(null)
 
-    useEffect(() => {
-        console.log(pokemons)
-
-
-    }, [])
+   
 
 
     const buttonref = useRef([])
     function filter(type, index) {
-        console.log("jo")
-
+      
         for (let i = 0; i < buttonref.current.length; i++) {
             const element = buttonref.current[i];
             if (i != index) {
@@ -77,7 +72,7 @@ const Galary = () => {
                         pokemons
                             .filter((item) => !Type || item.type === Type)
                             .map((item) => (
-                                <div key={item.coustome_id} className="preserve-3d flex flex-col items-center perspective-1000">
+                                <div key={item.coustome_id} className=" flex flex-col items-center perspective-[1000px]">
                                     <Cardcomponent data={item} />
                                 </div>
                             ))

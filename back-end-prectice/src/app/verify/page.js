@@ -2,7 +2,7 @@
 import React,{useState , useEffect} from 'react'
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
-const verify = () => {
+const Verify = () => {
     const router = useRouter()
     const [status, setStatus] = useState("verfying...")
     const queryParams = useSearchParams()
@@ -46,4 +46,4 @@ const verify = () => {
 
 }
 
-export default verify
+export default Verify

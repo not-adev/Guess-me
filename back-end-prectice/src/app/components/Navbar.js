@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { useRouter } from 'next/navigation'
+import ImageTag from './ImageTag'
 
 
 const Navbar = () => {
@@ -25,7 +26,7 @@ const Navbar = () => {
         <li><Link href={`/user`}>Gallery</Link> </li>
         <li className='group'>
           <Link href={`/user`}>
-            <img src="/user.png" alt="img" className='h-[30px] w-[30px] border border-black rounded-xl invert-100 my-3' />
+            <ImageTag src="/user.png" alt="img" className='h-[30px] w-[30px] border border-black rounded-xl invert-100 my-3' />
 
           </Link>
           <button onClick={logout} className='hidden cursor-pointer group-hover:block group-hover:absolute border-2 bg-white text-black text-lg rounded-lg right-5 border-white font-semibold px-2'>
@@ -41,7 +42,7 @@ const Navbar = () => {
           <li className='hover:invert-20 invert-0 '>
             <Link href={`/user`}>
 
-              <img src="user.png" alt="img" className='h-[30px] w-[30px] border border-black rounded-xl invert-100 my-3 ' />
+              <ImageTag src="/user.png" alt="img" className='h-[30px] w-[30px] border border-black rounded-xl invert-100 my-3 ' />
               <div> </div>
             </Link>
           </li>

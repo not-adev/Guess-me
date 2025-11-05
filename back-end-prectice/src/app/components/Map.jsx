@@ -2,6 +2,8 @@
 import React, { useState, useRef } from 'react'
 import { usePokemonContext } from '../context/PokemonContext'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import ImageTag from './ImageTag'
 
 
 const Map = () => {
@@ -18,7 +20,7 @@ const Map = () => {
     const changeImg = (index, req) => {
         const length = pokemons.length
 
-        const url = ` http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/${index + 1}-btn.jpg`
+        const url = `http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/${index + 1}-btn.jpg`
         setModeImage(url)
         const content = buttonContent.current[index].innerText
         setMapcontent(content)
@@ -60,7 +62,7 @@ const Map = () => {
             <div className='flex flex-col h-[514px] m-auto md:m-0 w-[80%] md:w-[30%] bg-[#292e38] overflow-auto'>
                 <button onClick={() => changeImg(0, 0)} className='flex gap-3 hover:cursor-pointer items-center w-full  p-2'>
                     <div className='h-[70px] w-[90px] '>
-                        <img src=" http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/1-btn.jpg" alt="img" className='h-full w-full rounded-lg' />
+                        <ImageTag src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/1-btn.jpg" alt="img" className='h-full w-full rounded-lg' />
                     </div>
 
                     <div className='text-left font-bold text-xl text-nowrap overflow-hidden  w-[180px]' >
@@ -73,7 +75,7 @@ const Map = () => {
                 </button>
                 <button onClick={() => changeImg(1, 45)} className=' hover:cursor-pointer flex gap-3 items-center p-2 '>
                     <div className="h-[70px] w-[90px]">
-                        <img src=" http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/2-btn.jpg" alt="img" className=' rounded-lg h-full w-full ' />
+                        <ImageTag src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/2-btn.jpg" alt="img" className=' rounded-lg h-full w-full ' />
                     </div>
 
                     <div className='text-left font-bold text-xl text-nowrap overflow-hidden  w-[180px]' >
@@ -85,7 +87,7 @@ const Map = () => {
                 </button>
                 <button onClick={() => changeImg(2, 75)} className=' hover:cursor-pointer flex gap-3 items-center p-2 '>
                     <div className="h-[70px] w-[90px]">
-                        <img src=" http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/3-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
+                        <ImageTag src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/3-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
                     </div>
 
                     <div className='text-left font-bold text-xl text-nowrap overflow-hidden  w-[180px]' >
@@ -98,7 +100,7 @@ const Map = () => {
 
                 <button onClick={() => changeImg(3, 115)} className=' hover:cursor-pointer flex gap-3 items-center p-2 '>
                     <div className="h-[70px] w-[90px]">
-                        <img src=" http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/4-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
+                        <ImageTag src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/4-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
                     </div>
 
                     <div className='text-left font-bold text-xl text-nowrap overflow-hidden  w-[180px]' >
@@ -110,7 +112,7 @@ const Map = () => {
                 </button>
                 <button onClick={() => changeImg(4, 147)} className=' hover:cursor-pointer flex gap-3 items-center p-2 '>
                     <div className="h-[70px] w-[90px]">
-                        <img src=" http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/5-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
+                        <ImageTag src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/5-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
                     </div>
 
                     <div className='text-left font-bold text-xl text-nowrap overflow-hidden  w-[180px]' >
@@ -122,7 +124,7 @@ const Map = () => {
                 </button>
                 <button onClick={() => changeImg(5, 193)} className=' hover:cursor-pointer flex gap-3 items-center p-2 '>
                     <div className="h-[70px] w-[90px]">
-                        <img src=" http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/6-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
+                        <ImageTag src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/6-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
                     </div>
 
                     <div ref={(el) => (buttonContent.current[5] = el)} className='text-left font-bold text-xl text-nowrap overflow-hidden  w-[180px]' >
@@ -134,7 +136,7 @@ const Map = () => {
                 </button>
                 <button onClick={() => changeImg(6, 214)} className=' hover:cursor-pointer flex gap-3 items-center p-2 '>
                     <div className="h-[70px] w-[90px]">
-                        <img src=" http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/7-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
+                        <ImageTag src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/7-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
                     </div>
 
                     <div ref={(el) => (buttonContent.current[6] = el)} className='text-left font-bold text-xl text-nowrap overflow-hidden  w-[180px]' >
@@ -146,7 +148,7 @@ const Map = () => {
                 </button>
                 <button onClick={() => changeImg(7, 240)} className='flex  hover:cursor-pointer gap-3 items-center p-2 '>
                     <div className="h-[70px] w-[90px]">
-                        <img src=" http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/8-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
+                        <ImageTag src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/8-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
                     </div>
 
                     <div ref={(el) => (buttonContent.current[7] = el)} className='text-left font-bold text-xl text-nowrap overflow-hidden  w-[180px]' >
@@ -158,7 +160,7 @@ const Map = () => {
                 </button>
                 <button onClick={() => changeImg(8, 312)} className='flex  hover:cursor-pointer gap-3 items-center p-2 '>
                     <div className="h-[70px] w-[90px]">
-                        <img src=" http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/9-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
+                        <ImageTag src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943829/pokemons/map-images/9-btn.jpg" alt="img" className='h-full w-full rounded-lg ' />
                     </div>
 
                     <div className='text-left font-bold text-xl text-nowrap overflow-hidden  w-[180px]' >
@@ -172,7 +174,7 @@ const Map = () => {
             <div className=' bg-[#292e38] w-[80%]  md:w-[70%] m-auto     ' >
 
                 <div className='relative'>
-                    <img src={modeImage} alt="img" className='w-full h-[400px]' />
+                    <ImageTag src={modeImage} alt="img" className='w-full h-[400px]' />
                     <div className={locked ? "block" : "hidden"}>
                         <div className='absolute top-[50%] z-11 left-[50%] transform translate-x-[50%] translate-y-[50%]'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-lock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 2a5 5 0 0 1 5 5v3a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-10a3 3 0 0 1 -3 -3v-6a3 3 0 0 1 3 -3v-3a5 5 0 0 1 5 -5m0 12a2 2 0 0 0 -1.995 1.85l-.005 .15a2 2 0 1 0 2 -2m0 -10a3 3 0 0 0 -3 3v3h6v-3a3 3 0 0 0 -3 -3" /></svg>

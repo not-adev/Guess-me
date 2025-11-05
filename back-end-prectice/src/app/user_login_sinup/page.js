@@ -7,7 +7,7 @@ import Logintoast from '../components/Logintoast'
 import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 
-const singup_login = () => {
+const Singup_login = () => {
     const router = useRouter()
     const emailRef = useRef(null)
     const code = 2
@@ -207,4 +207,4 @@ const singup_login = () => {
     )
 }
 
-export default singup_login
+export default Singup_login

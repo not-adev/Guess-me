@@ -3,6 +3,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Clock from '../components/Clock'
 import Won from '../components/Won'
+// import Image from 'next/image'
+import ImageTag from './ImageTag'
 import { useSocketContext } from '../multiplayer/context/SocketContext'
 import Multiplayerbutton from './Multiplayerbutton'
 import { useGroupMemberContext } from '../multiplayer/context/GroupMemberContext'
@@ -312,7 +314,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback, admin }) => {
 
                 {
                     loading &&
-                    <div><img src="public/loading-img.gif" alt="loading.." className='rounded-full absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' /></div>
+                    <div><ImageTag src="public/loading-img.gif" alt="loading.." className='rounded-full absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' /></div>
                 }
                 {data.length > 2 && !loading && !visible &&
                     <div className={`w-[70%] m-auto  border flex items-center justify-center `}>
@@ -328,7 +330,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback, admin }) => {
                                 </button>
                             </div>
 
-                            <img src={data[0].img} alt="img" className={`object-contain1 transform transition-all duration-3000 ${blured ? "brightness-0 " : "brightness-100"}`} />
+                            <ImageTag src={data[0].img} alt="img" className={`object-contain1 transform transition-all duration-3000 ${blured ? "brightness-0 " : "brightness-100"}`} />
 
                         </div>
                         <div className='w-full m-auto '>

@@ -1,7 +1,8 @@
 "use client "
-
+import ImageTag from './ImageTag'
 import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
+
 
 
 
@@ -87,10 +88,8 @@ const Cardcomponent = ({ data }) => {
   const card = useRef(null)
   const glowRef = useRef(null)
   function third_dimesion(e) {
-
-    let x = e.clientX
-    let y = e.clientY
-    let { left, top, width, height, bottom } = card.current.getBoundingClientRect()
+    
+    let { left, top, width, height} = card.current.getBoundingClientRect()
 
     const centerX = left + width / 2;
     const centerY = top + height / 2;
@@ -123,20 +122,20 @@ const Cardcomponent = ({ data }) => {
           </div>
           <div className='flex '>
             <div className='flex gap-x-5 mx-3'>
-              {/* <img src="/v5_31.png" alt="img" className='w-[47px] h-[55px] mt-4' /> */}
-              <img src="/v3_19.png" alt="img" className='w-[168px] h-[62px] ' />
+              {/* <ImageTagTag src="/v5_31.png" alt="img" className='w-[47px] h-[55px] mt-4' /> */}
+              <ImageTag  src="/v3_19.png" alt="img" className='w-[168px] h-[62px] ' />
             </div>
           </div>
           <div className='flex justify-center transform scale-150 transition-transform duration-1000'>
-            <img src={data.img} alt="img" className='h-[120px] preserve-3d' />
+            <ImageTag src={data.img} alt="img" className='h-[120px] preserve-3d' />
           </div>
           <div className='w-[90%] relative '>
-            <img src="/v2_10.png" alt="img" />
+            <ImageTag src="/v2_10.png" alt="img" />
             <div className='absolute top-1 left-7 flex gap-x-1 '>
-              <img src="/v3_20.png" alt="" className='w-[21px] h-[21px]' />
-              <img src="/v3_20.png" alt="" className='w-[21px] h-[21px]' />
-              <img src="/v3_20.png" alt="" className='w-[21px] h-[21px]' />
-              <img src="/v3_20.png" alt="" className='w-[21px] h-[21px]' />
+              <ImageTag src="/v3_20.png" alt="" className='w-[21px] h-[21px]' />
+              <ImageTag src="/v3_20.png" alt="" className='w-[21px] h-[21px]' />
+              <ImageTag src="/v3_20.png" alt="" className='w-[21px] h-[21px]' />
+              <ImageTag src="/v3_20.png" alt="" className='w-[21px] h-[21px]' />
 
             </div>
           </div>

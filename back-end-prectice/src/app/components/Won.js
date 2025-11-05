@@ -11,8 +11,11 @@ const Won = ({arrayOfData}) => {
             {
                 arrayOfData.map((item)=>{
                     return (
+                        <div key={item._id}>
 
-                        <Cardcomponent data={item}  />
+                            <Cardcomponent data={item}  />
+                        </div>
+
                     )
                 })
             }

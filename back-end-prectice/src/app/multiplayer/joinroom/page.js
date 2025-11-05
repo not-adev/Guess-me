@@ -7,7 +7,7 @@ import { useGroupMemberContext } from '../context/GroupMemberContext'
 import { useSocketContext } from '../context/SocketContext';
 import Mulitplayer from '@/app/components/Mulitplayer';
 import MultiplayerTable from '@/app/components/MultiplayerTable';
-const joinRoom = () => {
+const JoinRoom = () => {
   let S_no = 0
   const [showgame, setShowgame] = useState(false)
   const socket = useSocketContext()
@@ -162,4 +162,4 @@ const joinRoom = () => {
   )
 }
 
-export default joinRoom
+export default JoinRoom

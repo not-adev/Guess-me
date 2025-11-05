@@ -5,6 +5,8 @@ import Map from '../components/Map'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { usePokemonContext } from '../context/PokemonContext'
+import Image from 'next/image'
+import ImageTag from '../components/ImageTag'
 
 
 const Main = () => {
@@ -57,7 +59,7 @@ const Main = () => {
 
     return (
         <div className='bg-[#181c23] m-0 p-0 box-border text-white relative'>
-            <img src="main-bg.png" alt="img" className='w-[100%] object-fill absolute  top-0 left-0' />
+            <ImageTag width={1} height={1} src="/main-bg.png" alt="img" className='w-[100%] object-fill absolute  top-0 left-0' />
 
             <Navbar />
 
@@ -68,7 +70,7 @@ const Main = () => {
                         <div className='md:h-[350px] bg-yellow md:flex bg-re-600  relative w-[100%] m-auto  '>
 
 
-                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img1.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg w-full  md:w-[70%]  md:h-auto h-[400px] ' />
+                            <ImageTag   src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img1.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg w-full  md:w-[70%]  md:h-auto h-[400px] ' />
                             <div className=' bg-[rgba(0,0,0,.8)] w-full md:w-[30%] text-center p-2 md:rounded-lg md:rounded-l-none rounded-b-lg md:h-full '>
                                 <div> info </div>
                                 <div>
@@ -89,7 +91,7 @@ const Main = () => {
                         <div className='md:h-[350px] bg-yellow md:flex relative w-[100%] m-auto  '>
 
 
-                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img2.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg w-full md:w-[70%]  md:h-auto h-[400px]  ' />
+                            <ImageTag width={1} height={1}  src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img2.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg w-full md:w-[70%]  md:h-auto h-[400px]  ' />
                             <div className='absol bg-[rgba(0,0,0,.8)] md:w-[30%] text-center p-2 md:rounded-lg md:rounded-l-none rounded-b-lg w-full md:h-full '>
                                 <div> info </div>
                                 <div>
@@ -107,7 +109,7 @@ const Main = () => {
                         <div className='md:h-[350px] md:flex relative w-[100%] m-auto  '>
 
 
-                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img3.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg  md:w-[70%] w-full md:h-auto h-[400px]  ' />
+                            <ImageTag width={1} height={1}  src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img3.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg  md:w-[70%] w-full md:h-auto h-[400px]  ' />
                             <div className=' bg-[rgba(0,0,0,.8)] md:w-[30%] w-full text-center p-2 md:rounded-lg md:rounded-l-none rounded-b-lg md:h-full '>
                                 <div> info </div>
                                 <div>
@@ -125,7 +127,7 @@ const Main = () => {
                         <div className='md:h-[350px] md:flex relative w-[100%] m-auto  '>
 
 
-                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img4.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg  md:w-[70%] w-full md:h-auto h-[400px]  ' />
+                            <ImageTag width={1} height={1}  src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img4.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg  md:w-[70%] w-full md:h-auto h-[400px]  ' />
                             <div className=' bg-[rgba(0,0,0,.8)] md:w-[30%] w-full text-center p-2 md:rounded-lg md:rounded-l-none rounded-b-lg md:h-full '>
                                 <div> info </div>
                                 <div>
@@ -143,7 +145,7 @@ const Main = () => {
                         <div className='md:h-[350px] md:flex relative w-[100%] m-auto  '>
 
 
-                            <img src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img5.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg  md:w-[70%] w-full md:h-auto h-[400px]   ' />
+                            <ImageTag width={1} height={1}  src="http://res.cloudinary.com/dcgquf0d0/image/upload/v1750943383/pokemons/slider-images/img5.jpg" alt="img" className='md:rounded-lg md:rounded-r-none rounded-t-lg  md:w-[70%] w-full md:h-auto h-[400px]   ' />
                             <div className=' bg-[rgba(0,0,0,.8)] md:w-[30%] w-full text-center p-2 md:rounded-lg md:rounded-l-none rounded-b-lg md:h-full '>
                                 <div> info </div>
                                 <div>
@@ -173,19 +175,19 @@ const Main = () => {
 
             <div className='flex flex-col md:flex-row  w-full items-center justify-center text-3xl gap-10 pt-9 '>
                 <div className=' bg-[#292e38] bg-cover h-[150px] w-[290px] md:w-a  lg:w-[290px] justify-center gap-2 flex items-center  px-3'>
-                    <img className='invert-100' src="https://img.icons8.com/ios/50/battle.png" alt="battle" />
+                    <ImageTag width={1} height={1}  className='invert-100' src="https://img.icons8.com/ios/50/battle.png" alt="battle" />
                     <div className=' font-bold '>
                         Hunt
                     </div>
                 </div>
                 <div className=' bg-[#292e38] bg-cover h-[150px] w-[290px] md:w-auto lg:w-[290px] justify-center  flex items-center gap-2 px-3'>
-                    <img className='invert-100' src="https://img.icons8.com/ios-glyphs/30/fire-element--v1.png" alt="fire-element--v1" />
+                    <ImageTag width={1} height={1}  className='invert-100' src="https://img.icons8.com/ios-glyphs/30/fire-element--v1.png" alt="fire-element--v1" />
                     <div className=' font-bold '>
                         Rapid Fire
                     </div>
                 </div>
                 <div className=' bg-[#292e38] bg-cover h-[150px] w-[290px] md:w-auto lg:w-[290px] justify-center  flex items-center gap-2 px-3'>
-                    <img className='invert-100 ' src="https://img.icons8.com/external-outline-andi-nur-abdillah/64/external-Multiplayer-gaming-(outline)-outline-andi-nur-abdillah.png" alt="external-Multiplayer-gaming-(outline)-outline-andi-nur-abdillah" />
+                    <ImageTag width={1} height={1}  className='invert-100 ' src="https://img.icons8.com/external-outline-andi-nur-abdillah/64/external-Multiplayer-gaming-(outline)-outline-andi-nur-abdillah.png" alt="external-Multiplayer-gaming-(outline)-outline-andi-nur-abdillah" />
                     <div className=' font-bold '>
                         <Link href="/multiplayer"> Multiplayer</Link>
                     </div>

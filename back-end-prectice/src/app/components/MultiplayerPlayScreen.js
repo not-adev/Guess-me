@@ -2,7 +2,8 @@
 import React,{useState} from 'react'
 import Multiplayerbutton from './Multiplayerbutton'
 import Clock from './Clock'
-
+import Image from 'next/image'
+import ImageTag from './ImageTag'
 const MultiplayerPlayScreen = ({callbackFromButoon ,showclock, data , callbackFromClock}) => {
     const [blured, setBlured] = useState(true)
   return (
@@ -19,7 +20,7 @@ const MultiplayerPlayScreen = ({callbackFromButoon ,showclock, data , callbackFr
                                   </button>
                               </div>
   
-                              <img src={data[0].img} alt="img" className={`object-contain1 transform transition-all duration-1000 ${blured ? "brightness-0 " : "brightness-100"}`} />
+                              <ImageTag src={data[0].img} alt="img" className={`object-contain1 transform transition-all duration-1000 ${blured ? "brightness-0 " : "brightness-100"}`} />
   
                           </div>
                           <div className='w-full m-auto '>

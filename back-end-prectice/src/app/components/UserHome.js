@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Galary from './Galary'
+import Image from 'next/image'
+import ImageTag from './ImageTag'
 
 
 const UserHome = () => {
@@ -77,7 +79,7 @@ const UserHome = () => {
 
                         <div className=' flex flex-col md:flex-row gap-6 pb-9 '>
                             <div className='flex  md:w-[20%] self-start gap-1 flex-col justify-center items-cente'>
-                                <img src="/user.png" alt="img" className='h-[150px] w-[150px] border border-black rounded-xl invert-100 mt-3' />
+                                <ImageTag src="/user.png" alt="img" className='h-[150px] w-[150px] border border-black rounded-xl invert-100 mt-3' />
 
                                 <div className='w-[150px] text-4xl font-bold  text-center'>
                                     {userData.userName}

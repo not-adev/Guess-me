@@ -4,6 +4,8 @@ import Cardcomponent from './Cardcomponent'
 import { ToastContainer, toast } from 'react-toastify'
 import { useGroupMemberContext } from '../multiplayer/context/GroupMemberContext'
 import { useSocketContext } from '../multiplayer/context/SocketContext'
+import Image from 'next/image'
+import ImageTag from './ImageTag'
 
 const Select = ({ callback, id }) => {
   const { allmembers, setAllmembers } = useGroupMemberContext()
@@ -210,7 +212,7 @@ const Select = ({ callback, id }) => {
 
   return (
     <div className='  h-screen w-screen overflow-auto '>
-      <div className='absolute top-0 left-0 -z-2 h-screen w-screen'> <img src="https://i.pinimg.com/1200x/d3/7e/3e/d37e3ebd66d484d4af0c6e5750548248.jpg" className='h-full w-full object-center object-cover blur-[6px]' alt="img" /></div>
+      <div className='absolute top-0 left-0 -z-2 h-screen w-screen'> <ImageTag src="https://i.pinimg.com/1200x/d3/7e/3e/d37e3ebd66d484d4af0c6e5750548248.jpg" className='h-full w-full object-center object-cover blur-[6px]' alt="img" /></div>
       {
         allmembers.members.length <= cuurentUserNumber ?
           (<div className='text-2xl text-white text-center h-screen w-screen flex flex-col items-center justify-center'>

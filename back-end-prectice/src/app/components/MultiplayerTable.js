@@ -1,7 +1,8 @@
-"use cliet"
+"use client"
 import React, { useEffect, useState } from 'react'
 import { useGroupMemberContext } from '../multiplayer/context/GroupMemberContext'
-
+import Image from 'next/image'
+import ImageTag from './ImageTag'
 
 
 const MultiplayerTable = ({ Play, useEffectFuntion, groupName = "no group name", admin = false }) => {
@@ -72,7 +73,7 @@ const MultiplayerTable = ({ Play, useEffectFuntion, groupName = "no group name",
                                         <div className='z-10'>{item.userName}</div>
                                         {/* <div className='z-10'>{item.admin ? "Admin" : "Player"}</div> */}
                                         <div className='absolute top-0 z-0 h-full overflow-hidden rounded-2xl w-full left-0 '>
-                                            <img className='h-full object-center group-hover:scale-110 transition-all duration-300 group-hover:w-[500px] rounded-2xl w-full md:opacity-75 opacity-100     object-cover' src={Img} alt="img" />
+                                            <ImageTag className='h-full object-center group-hover:scale-110 transition-all duration-300 group-hover:w-[500px] rounded-2xl w-full md:opacity-75 opacity-100     object-cover' src={Img} alt="img" />
                                         </div>
                                     </div>
 
@@ -83,7 +84,7 @@ const MultiplayerTable = ({ Play, useEffectFuntion, groupName = "no group name",
 
                 </div>
                 <div className="absolute    top-0 right-0 bg-cover before:content-[''] before:bg-gradient-to-r before:from-[rgba(35,35,53,1)]  before:to-[rgba(35,35,53,0)] before:z-7 before:absolute before:top-0 before:left-0 before:w-[200px] before:h-full rounded-r-4xl w-full md:w-[600px] h-full">
-                    <img src="https://i.pinimg.com/736x/ae/8f/29/ae8f29addceffadef54ec1811deba7a3.jpg" className="object-cover absolute top-0 right-0 h-full w-full md:opacity-40 opacity-10 rounded-r-2xl" alt="img" />
+                    <ImageTag src="https://i.pinimg.com/736x/ae/8f/29/ae8f29addceffadef54ec1811deba7a3.jpg" className="object-cover absolute top-0 right-0 h-full w-full md:opacity-40 opacity-10 rounded-r-2xl" alt="img" />
 
                 </div>
 
@@ -140,7 +141,7 @@ const MultiplayerTable = ({ Play, useEffectFuntion, groupName = "no group name",
         //                 <div className='z-10'>{item.userName}</div>
         //                 <div className='z-10'>{item.admin ? "Admin" : "Player"}</div>
         //                 <div className='absolute top-0 z-0 w-full left-0 '>
-        //                     <img className='h-[100px] object-center rounded-2xl w-full opacity-70 object-cover' src={Img} alt="img" />
+        //                     <ImageTag className='h-[100px] object-center rounded-2xl w-full opacity-70 object-cover' src={Img} alt="img" />
         //                 </div>
         //             </div>
 

@@ -7,6 +7,9 @@ await connect_to_db()
 export async function GET(request) {
   try {
     const token = request.cookies.get('token')?.value || '' 
+    if(!token){
+      NextResponse.json({message : 'access denied'})
+    }
     const id = await get_id(token)
     
     const user = await User.findOne({ _id: id }).select('-password')

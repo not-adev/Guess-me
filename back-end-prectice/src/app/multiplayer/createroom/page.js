@@ -1,5 +1,6 @@
 "use client"
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, {useEffect, useState } from 'react'
+// import Image from 'next/image'
 import { io } from 'socket.io-client'
 import { useSocketContext } from '../context/SocketContext'
 import { useGroupMemberContext } from '../context/GroupMemberContext'
@@ -8,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import MultiplayerTable from '@/app/components/MultiplayerTable'
 
 import { usePokemonContext } from '@/app/context/PokemonContext'
-const createRoom = () => {
+const CreateRoom = () => {
   let S_no = 0
   const { pokemons, setPokemons } = usePokemonContext()
   const [showgame, setShowgame] = useState(false)
@@ -125,4 +126,4 @@ const createRoom = () => {
   )
 }
 
-export default createRoom
+export default CreateRoom

@@ -5,6 +5,8 @@ import Clock from '../components/Clock'
 import Won from '../components/Won'
 import GameButtons from '../components/GameButtons'
 import Loose from '../components/Loose'
+import Image from 'next/image'
+import ImageTag from '../components/ImageTag'
 
 const Game = () => {
 
@@ -169,7 +171,7 @@ const Game = () => {
                 </button>
               </div>
              
-         <img src={data[0].img} alt="img" className={`object-contain1 transform transition-all duration-1000 ${blured ? "brightness-0 " : "brightness-100"}`} />
+         <ImageTag  src={data[0].img} alt="img" className={`object-contain1 transform transition-all duration-1000 ${blured ? "brightness-0 " : "brightness-100"}`} />
           
 
             </div>
@@ -181,7 +183,7 @@ const Game = () => {
 
 
           </div> : !visible ? 
-          <div><img src="loading-img.gif" alt="loading.." className='rounded-full absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]'/></div>
+          <div><ImageTag  src="loading-img.gif" alt="loading.." className='rounded-full absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]'/></div>
           :null
               
         }
