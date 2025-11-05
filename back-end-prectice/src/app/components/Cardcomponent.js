@@ -83,7 +83,7 @@ const Cardcomponent = ({ data }) => {
 
 
 
-  }, [])
+  }, [data])
 
   const card = useRef(null)
   const glowRef = useRef(null)

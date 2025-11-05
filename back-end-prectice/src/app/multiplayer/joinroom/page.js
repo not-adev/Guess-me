@@ -155,7 +155,7 @@ const JoinRoom = () => {
           :
           showgame ? <Mulitplayer callback={callbackFromMultiplayer} /> :
            
-            <MultiplayerTable useEffectFuntion={setup} admin={false} />
+            <MultiplayerTable eEffectFuntion={setup} admin={false} />
       }
       <div><ToastContainer /></div>
     </div>

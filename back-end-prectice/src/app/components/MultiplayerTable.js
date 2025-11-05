@@ -5,7 +5,7 @@ import Image from 'next/image'
 import ImageTag from './ImageTag'
 
 
-const MultiplayerTable = ({ Play, useEffectFuntion, groupName = "no group name", admin = false }) => {
+const MultiplayerTable = ({ Play, eEffectFuntion, groupName = "no group name", admin = false }) => {
     const { allmembers, setAllmembers } = useGroupMemberContext()
     const [loading, setloading] = useState(true)
     let S_no = 0
@@ -14,7 +14,7 @@ const MultiplayerTable = ({ Play, useEffectFuntion, groupName = "no group name",
     useEffect(() => {
         async function setup() {
             setloading(true)
-            await useEffectFuntion()
+            await eEffectFuntion()
             setloading(false)
 
         }

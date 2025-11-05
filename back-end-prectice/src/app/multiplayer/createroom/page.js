@@ -118,7 +118,7 @@ const CreateRoom = () => {
   return (
     <>{
       showgame ? <Mulitplayer callback={callbackFromMultiplayer} /> :
-        <MultiplayerTable Play={Play} useEffectFuntion={setup} admin={true} groupName={groupName} />
+        <MultiplayerTable Play={Play} eEffectFuntion={setup} admin={true} groupName={groupName} />
     }
       <div><ToastContainer /></div>
     </>
