@@ -2,11 +2,10 @@ import express from 'express'
 import { Server } from 'socket.io'
 import cors from 'cors';
 import { createServer } from "http"
-import createroom from './namespaces/createroom.js';
-import joinroom from './namespaces/joinroom.js';
-import play from './namespaces/play.js';
-
+import { config } from 'dotenv';
+config();
 const app = express()
+
 const server = createServer(app)
 let Rooms = new Map()
 let Timings = new Map()
@@ -33,14 +32,14 @@ let Timings = new Map()
 
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.MODE == 'development' ? 'http://localhost:3000' : process.env.FRONT_END_URL,
   credentials: true
 }));
 app.use(express.json());
 app.use(express.static('public'));
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3000',
+   origin: process.env.MODE == 'development' ? 'http://localhost:3000' : process.env.FRONT_END_URL,
     methods: ["GET", "POST"],
     credentials: true
   }

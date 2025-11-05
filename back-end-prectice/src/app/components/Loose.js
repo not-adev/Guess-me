@@ -9,7 +9,7 @@ const Loose = ({arrayOfData = []}) => {
             </div>
             {
                 arrayOfData.map((item)=>{
-                    return (
+                    return (    
                         <div key={item._id}>
 
                             <Cardcomponent  data={item}  />
