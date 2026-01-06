@@ -43,7 +43,7 @@ const JoinRoom = () => {
   const [emiting, setemiting] = useState(false)
 
   async function setup() {
-    if(!emiting){
+    if (!emiting) {
       return
     }
     const res = await fetch(`/api/multiplayer/getuserdata`);
@@ -54,7 +54,7 @@ const JoinRoom = () => {
     const { data } = await ft.json()
     setPokemons(data)
     console.log(data)
-    socket.current.emit("joinRoom", { data: userData, roomName:"nothing", pokemonData: data })
+    socket.current.emit("joinRoom", { data: userData, roomName: "nothing", pokemonData: data })
   }
 
 
@@ -63,7 +63,7 @@ const JoinRoom = () => {
     async function getpokemons() {
       const ft = await fetch(`/api/game/displaypokemon`)
       const { data } = await ft.json()
-   
+
       setPokemons(data)
     }
     getpokemons()
@@ -116,13 +116,13 @@ const JoinRoom = () => {
       const res = await fetch(`/api/multiplayer/getuserdata`);
       const resJ = await res.json();
       const userData = resJ.data;
-    
+
 
       socket.current.emit("joinRoom", { data: userData, roomName: trimedName, pokemonData: pokemons }, (callback) => {
-        if (callback.res) { 
-          setRoomName("")
+        if (callback.res) {
+          // setRoomName("")
           setshow(true)
-      
+
         }
         else {
           callToast("No room found with given name")
@@ -143,22 +143,40 @@ const JoinRoom = () => {
 
   return (
     <div>
-      {
-        !show ?
 
-          (<div>
-            <form onSubmit={hadleRoomName}>
-              <input onChange={(e) => setRoomName(e.target.value)} value={roomName} required type="text" placeholder='Enter Room name' />
-              <button type='submit'>{loading ? "loading" : "Submit"}</button>
+
+       {!show && (
+      <div className='absolute   inset-0 bg-[url(https://i.pinimg.com/736x/f0/d2/8d/f0d28df1476d8bf3a89371f504e4137c.jpg)]  bg-no-repeat bg-cover z-[100] flex items-center  justify-center'>
+        <div className='absolute inset-0 h-full w-full bg-black/70 z-[-1]'></div>
+          <div className='bg-black/50 text-white p-6 rounded-lg border-2 border-white shadow-xl max-w-sm w-full mx-4'>
+            <form onSubmit={hadleRoomName} className='flex flex-col items-center gap-4'>
+              <input
+                className='h-12 w-full pl-3 text-white rounded focus:outline-none '
+                onChange={(e) => setRoomName(e.target.value)}
+                value={roomName}
+                required
+                type="text"
+                placeholder='Enter Room name'
+              />
+              <button
+                className='w-full text-white text-xl bg-amber-600 p-2 font-bold rounded-lg hover:bg-amber-700 transition-colors'
+                type='submit'
+              >
+                {loading ? "Loading..." : "Submit"}
+              </button> 
             </form>
-          </div>)
-          :
-          showgame ? <Mulitplayer callback={callbackFromMultiplayer} /> :
-           
-            <MultiplayerTable eEffectFuntion={setup} admin={false} />
-      }
-      <div><ToastContainer /></div>
-    </div>
+          </div>
+      </div>
+        )}
+
+
+      
+      { showgame ? <Mulitplayer callback={callbackFromMultiplayer} />:
+       <MultiplayerTable eEffectFuntion={setup} admin={false} groupName={roomName} />  }
+
+
+  <div><ToastContainer /></div>
+    </div >
   )
 }
 

@@ -231,7 +231,7 @@ const Select = ({ callback, id }) => {
               {allmembers.pokemonData[cuurentUserNumber].map((item) => {
 
                 return (
-                  <div key={item.coustome_id} className='flex flex-col items-center gap-y-3 preserve-3d perspective-1000  justify-center'>
+                  <div key={item.coustome_id} className='flex flex-col items-center gap-y-3 perspective-[1000px]  justify-center'>
                     <Cardcomponent data={item} />
 
                     <input className='m-auto h-[30px] w-[30px] b ' type="radio" name='card' value={item.coustome_id} onChange={(e) => handlechange(e)} />

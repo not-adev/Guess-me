@@ -5,7 +5,6 @@ import { createServer } from "http"
 import { config } from 'dotenv';
 config();
 const app = express()
-
 const server = createServer(app)
 let Rooms = new Map()
 let Timings = new Map()
@@ -29,19 +28,20 @@ let Timings = new Map()
 // value --> { memberes: [{id: "odufdhsfk",userName: "Arif", ...},{},{}]
 //     pokemonData: [{ image and other info of each pokemo }, {},{}] }
 
-
-
 app.use(cors({
   origin: process.env.MODE == 'development' ? 'http://localhost:3000' : process.env.FRONT_END_URL,
   credentials: true
 }));
+
 app.use(express.json());
 app.use(express.static('public'));
+
+
 const io = new Server(server, {
   cors: {
    origin: process.env.MODE == 'development' ? 'http://localhost:3000' : process.env.FRONT_END_URL,
-    methods: ["GET", "POST"],
-    credentials: true
+   methods: ["GET", "POST"],
+   credentials: true
   }
 })
 
@@ -49,15 +49,10 @@ const io = new Server(server, {
 const port = 4000
 
 app.get('/', (req, res) => {
+  console.log('hhhkhk')
   res.send('Hello Worl!')
 })
 
-
-
-
-// createroom(io)
-// joinroom(io)
-// play(io)
 
 
 io.on("connection", (socket) => {

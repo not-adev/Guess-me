@@ -22,7 +22,7 @@ const Navbar = () => {
       </div>
       <ul className='md:flex gap-6 items-center hidden  '>
         <li><Link href={`/main`}>Home</Link></li>
-        <li>Modes</li>
+        <li><a href='#map' >Modes </a></li>
         <li><Link href={`/user`}>Gallery</Link> </li>
         <li className='group'>
           <Link href={`/user`}>

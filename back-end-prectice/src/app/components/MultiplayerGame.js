@@ -314,7 +314,7 @@ const MultiplayerGame = ({ pokemonTransfer, myselection, callback, admin }) => {
 
                 {
                     loading &&
-                    <div><ImageTag src="public/loading-img.gif" alt="loading.." className='rounded-full absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' /></div>
+                    <div><img src="loading-img.gif" alt="loading.." className='rounded-full absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]'/></div>
                 }
                 {data.length > 2 && !loading && !visible &&
                     <div className={`w-[70%] m-auto  border flex items-center justify-center `}>

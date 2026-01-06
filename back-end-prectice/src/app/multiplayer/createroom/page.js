@@ -15,7 +15,7 @@ const CreateRoom = () => {
   const [showgame, setShowgame] = useState(false)
   const [groupName, setGroupName] = useState([])
   const callToast = (e) => toast.error(e); 
-  // const [loading, setloading] = useState(true)
+  const [loading, setloading] = useState(true)
   const { allmembers, setAllmembers } = useGroupMemberContext()
 
   const socket = useSocketContext()

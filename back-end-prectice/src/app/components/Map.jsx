@@ -54,7 +54,7 @@ const Map = () => {
 
     }
     return (
-        <div className='map  h-auto md:w-[80%] w-[100%] m-auto md:flex items-start '>
+        <div id='map' className='map  h-auto md:w-[80%] w-[100%] m-auto md:flex items-start '>
             
         <div className={`top-[50%] absolute left-[50%] transform translate-x-[-50%] z-20  border text-4xl p-8 bg-[rgba(0,0,0,0.6)] transition-all  ${visible ? "opacity-100" : "opacity-0"} `}> You have not unlcoked this reagion yet collect {numberReq} pokemons to unlcoked </div> 
                     

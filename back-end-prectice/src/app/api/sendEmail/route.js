@@ -26,21 +26,21 @@ export async function POST(Requsst) {
             console.log(account)
         }
 
-        // const transporter = nodemailer.createTransport({
-        //     service: 'gmail',
-        //     auth: {
-        //         user: 'ansariarif123111@gmail.com',
-        //         pass: `${process.env.APP_PASSWORD}`,
-        //     },
-        // });
         const transporter = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
-            port: 2525,
+            service: 'gmail',
             auth: {
-                user: "41164c6c0059b5",
-                pass: "66760fec0ce4f6"
-            }
+                user: 'ansariarif123111@gmail.com',
+                pass: `${process.env.APP_PASSWORD}`,
+            },
         });
+        // const transporter = nodemailer.createTransport({
+        //     host: "sandbox.smtp.mailtrap.io",
+        //     port: 2525,
+        //     auth: {
+        //         user: "41164c6c0059b5",
+        //         pass: "66760fec0ce4f6"
+        //     }
+        // });
 
 
 

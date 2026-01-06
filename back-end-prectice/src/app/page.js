@@ -7,14 +7,20 @@ export default function Home() {
   const videoref = useRef()
   const [visible, setvisble] = useState(true)
   const [contentvisible, setContentvisible] = useState(false)
+  const top_layout = useRef(null)
 
-
+   useEffect(() => {
+    if (visible) {
+      top_layout.current?.focus();
+    }
+  }, [visible]);
+  
+  function entered (eve){
+    enablePlayback()
+  }
 
   const enablePlayback = () => {
     setvisble(false)
-
-
-
 
     videoref.current.muted = false;
     videoref.current.play();
@@ -45,7 +51,7 @@ export default function Home() {
       </div>
 
 
-      <div className={contentvisible ? " absolute top-0 left-0 bg-[url(/pokeball-bg.gif)] md:h-screen h-auto bg-no-repeat bg-cover bg-center  " : "hidden"}>
+      <div className={contentvisible ? " absolute top-0 left-0 bg-[url(/home_bg.gif)] md:h-screen h-auto bg-no-repeat bg-cover bg-center  " : "hidden"}>
         <div className="flex  justify-end items-center gap-2 mt-4 mx-3" >
           <button className=" font-bold rounded-lg  bg-black hover:bg-white hover:text-black text-white  py-1 px-7 "><Link  href={`/user_login_sinup`}>SignUp</Link></button>
           <button className=" font-bold rounded-lg  bg-black hover:bg-white hover:text-black text-white  py-1 px-7 "><Link  href={`/user_login_sinup`}>Login</Link></button>
@@ -58,8 +64,8 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center  ">
               <div className="  border  border-white rounded-2xl w-[70%]  px-10 py-4 backdrop-blur-xl">
-                <h1 className="text-2xl mb-3 text-gray-200">About the website </h1>
-                <div className="text-[black] ml-3 "> This website is a simulation game about pokemons and perfoms a simple game experince about
+                 <h1 className="text-2xl mb-3 text-gray-200">About the website </h1>
+                <div className="text-white ml-3 "> This website is a simulation game about pokemons and perfoms a simple game experince about
                   identifing pokemons which appear at random form the backend based on your map (region example : - kanto )
                 </div>
               </div>
@@ -78,7 +84,7 @@ export default function Home() {
         </div>
 
       </div>
-      <div className={visible ? "absolute top-0 h-full z-10 text-white w-full bg-black flex items-center justify-center " : "hidden"}>
+      <div  ref={top_layout} onKeyDown={entered} tabIndex={0} className={visible ? "absolute top-0 h-full z-10 text-white w-full bg-black flex items-center justify-center " : "hidden"}>
         <button onClick={enablePlayback} className="border px-2 py-1 rounded-lg border-purple-500 text-2xl hover:cursor-pointer">Enter</button>
       </div>
     </>

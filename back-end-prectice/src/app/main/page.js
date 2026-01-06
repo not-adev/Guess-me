@@ -174,20 +174,25 @@ const Main = () => {
             </div>
 
             <div className='flex flex-col md:flex-row  w-full items-center justify-center text-3xl gap-10 pt-9 '>
-                <div className=' bg-[#292e38] bg-cover h-[150px] w-[290px] md:w-a  lg:w-[290px] justify-center gap-2 flex items-center  px-3'>
-                    <ImageTag width={1} height={1}  className='invert-100' src="https://img.icons8.com/ios/50/battle.png" alt="battle" />
+                <a href='#map' className=' bg-[#292e38] cursor-pointer bg-cover h-[150px] w-[290px] md:w-a  lg:w-[290px] justify-center gap-2 flex items-center  px-3'>
+                    <img  className='invert-100' src="https://img.icons8.com/ios/50/battle.png" alt="battle" />
                     <div className=' font-bold '>
                         Hunt
                     </div>
-                </div>
-                <div className=' bg-[#292e38] bg-cover h-[150px] w-[290px] md:w-auto lg:w-[290px] justify-center  flex items-center gap-2 px-3'>
-                    <ImageTag width={1} height={1}  className='invert-100' src="https://img.icons8.com/ios-glyphs/30/fire-element--v1.png" alt="fire-element--v1" />
-                    <div className=' font-bold '>
+                </a>
+                <div  className=' bg-[#292e38]  rel bg-cover h-[150px] relative w-[290px] md:w-auto lg:w-[290px] justify-center  flex items-center gap-2 px-3'>
+                    <div className=' h-full w-full bg-black/10 absolute inset-0 z-40'></div>
+                    <div className='absolute top-[50%] left-[50%] transform z-20 translate-x-[-50%] invert-0 translate-y-[-50%]'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-lock"><path stroke="none" d="M0 0h24v24H0z" fill="black" /><path d="M12 2a5 5 0 0 1 5 5v3a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-10a3 3 0 0 1 -3 -3v-6a3 3 0 0 1 3 -3v-3a5 5 0 0 1 5 -5m0 12a2 2 0 0 0 -1.995 1.85l-.005 .15a2 2 0 1 0 2 -2m0 -10a3 3 0 0 0 -3 3v3h6v-3a3 3 0 0 0 -3 -3" /></svg>
+                        </div>
+                    <img   className='invert-100' src="https://img.icons8.com/ios-glyphs/30/fire-element--v1.png" alt="fire-element--v1" />
+                    <div className=' font-bold relative '>
+                         
                         Rapid Fire
                     </div>
                 </div>
                 <div className=' bg-[#292e38] bg-cover h-[150px] w-[290px] md:w-auto lg:w-[290px] justify-center  flex items-center gap-2 px-3'>
-                    <ImageTag width={1} height={1}  className='invert-100 ' src="https://img.icons8.com/external-outline-andi-nur-abdillah/64/external-Multiplayer-gaming-(outline)-outline-andi-nur-abdillah.png" alt="external-Multiplayer-gaming-(outline)-outline-andi-nur-abdillah" />
+                    <img   className='invert-100 ' src="https://img.icons8.com/external-outline-andi-nur-abdillah/64/external-Multiplayer-gaming-(outline)-outline-andi-nur-abdillah.png" alt="external-Multiplayer-gaming-(outline)-outline-andi-nur-abdillah" />
                     <div className=' font-bold '>
                         <Link href="/multiplayer"> Multiplayer</Link>
                     </div>
