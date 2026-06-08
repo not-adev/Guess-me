@@ -144,9 +144,10 @@ PORT=5000
 
 Add screenshots of your project here.
 
-```md
-![Game Screenshot](./screenshots/game.png)
-```
+
+![Pokémon Game Screenshot](pokemon-game.png)
+![Pokémon Game Screenshot](img1.png)
+![Pokémon Game Screenshot](img2.png)
 
 ---
 
